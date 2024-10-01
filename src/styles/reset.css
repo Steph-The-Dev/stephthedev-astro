@@ -1,0 +1,72 @@
+/* Basic CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove text decoration for links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Ensure HTML5 block elements can be styled */
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Ensure images scale responsively */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Set a consistent line-height across the page */
+body {
+  line-height: 1.5;
+  font-family: sans-serif;
+}
+
+/* Remove border and outline for links and buttons on focus */
+a,
+button {
+  outline: none;
+  border: none;
+}
+
+/* Set a basic box-sizing model */
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in mobile devices */
+}
+
+/* Disable animations/transitions for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}

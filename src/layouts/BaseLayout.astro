@@ -1,9 +1,14 @@
 ---
+import BaseNavigation from "../components/BaseNavigation.astro"
 import BaseHead from "./BaseHead.astro"
+
+//styles
+import "../styles/reset.css"
 ---
 
 <html lang="en">
     <BaseHead {...Astro.props} />
+    <BaseNavigation />
 	<main>
 		<slot />
 	</main>

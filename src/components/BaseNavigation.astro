@@ -1,5 +1,58 @@
 ---
-
+const navigationItems = [
+	{ title: "Projects", href: "/projects" },
+	{ title: "Blog", href: "/blog" },
+	{ title: "About Me", href: "/about" },
+	{ title: "Contact", href: "#contact" },
+];
 ---
 
-<nav class="navbar"> <div class="logo">Brand</div> <ul class="nav-links"> <li><a href="/">Home</a></li> <li><a href="/about">About</a></li> <li><a href="/services">Services</a></li> <li><a href="/contact">Contact</a></li> </ul> <div class="menu-toggle" aria-label="toggle menu"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </div> </nav>
+<nav class="navbar">
+    <a href="/" class="navbar-name">Stephan Pfeiffer</a>
+    <div class="open-nav">
+
+        <ul class="nav-links">
+          {
+            navigationItems.map((item) => (
+              <li>
+                <a href={item.href}>{item.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+    </div>
+    <div class="mobile-nav">
+        
+    </div>
+  </nav>
+  
+
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: 2px solid black;
+      padding: 1.2rem 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+    
+    @media screen and (width < 640px) {
+        .nav-links {
+            display: none;
+        }
+        
+        .mobile-nav {
+            display: flex;
+        }
+        
+    }
+  </style>
