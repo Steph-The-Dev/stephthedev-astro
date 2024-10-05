@@ -1,0 +1,45 @@
+---
+import { join } from "node:path";
+import { AstroFont } from "astro-font";
+---
+
+<head>
+    <AstroFont
+      config={[
+        {
+          name: "Inter",
+          src: [
+            {
+              style: 'normal',
+              path: join(process.cwd(), 'public', 'fonts', 'InterRegular.ttf')
+            },
+            {
+              style: 'italic',
+              path: join(process.cwd(), 'public', 'fonts', 'InterItalic.ttf')
+            },
+          ],
+          preload: false,
+          display: "swap",
+          selector: ".inter",
+          fallback: "sans-serif",
+        },
+        {
+          name: "Sedan",
+          src: [
+            {
+              style: 'normal',
+              path: join(process.cwd(), 'public', 'fonts', 'SedanRegular.ttf')
+            },
+            {
+              style: 'italic',
+              path: join(process.cwd(), 'public', 'fonts', 'SedanItalic.ttf')
+            },
+          ],
+          preload: false,
+          display: "swap",
+          selector: ".sedan",
+          fallback: "serif",
+        },
+      ]}
+    />
+</head>

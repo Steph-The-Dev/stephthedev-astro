@@ -1,0 +1,24 @@
+---
+const { width } = Astro.props;
+---
+
+<main class:list={[width]}>
+
+    <h1>My name is Steph</h1>
+</main>
+
+<style>
+    main {
+        outline: auto;
+        margin-inline: auto;
+        text-align: center;
+    }
+    h1 {
+        font-family: 'Sedan';
+        font-style: italic;
+    }
+
+    .regularWidth {
+        max-width: 1280px;
+    }
+</style>
