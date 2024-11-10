@@ -1,10 +1,26 @@
 ---
+import { Icon } from 'astro-icon/components'
+
 const navigationItems = [
 	{ title: "Projects", href: "/projects" },
 	{ title: "Blog", href: "/blog" },
 	{ title: "About Me", href: "/about" },
 	{ title: "Contact", href: "#contact" },
 ];
+
+const socialIcons = [
+	{
+    title: "Github",
+    href: "https://github.com/Steph-The-Dev/",
+    icon: "mdi:github",
+  },
+	{
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/in/stephanpfeiffer/",
+		icon: "mdi:linkedin",
+  },
+];
+
 ---
 
 <nav class="navbar">
@@ -21,6 +37,15 @@ const navigationItems = [
           }
         </ul>
     </div>
+    <div class="social-icons">
+      {
+        socialIcons.map((icon) => (
+          <a href={icon.href}>
+            <Icon name={icon.icon} />
+          </a>
+        ))
+      }
+    </div>
     <div class="mobile-nav">
         
     </div>
@@ -36,23 +61,44 @@ const navigationItems = [
       padding: 1.2rem 1rem;
       font-family: 'Inter';
       font-style: normal;
+      font-size: 1.5rem;
     }
     
     .navbar-name {
-      
+      font-weight: bold;
     }
     
     .nav-links {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .mobile-nav {
         display: none;
     }
+
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+      flex-direction: row;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [data-icon] {
+      font-size: 2.5rem;
+    }
     
     @media screen and (width < 640px) {
         .nav-links {
+            display: none;
+        }
+
+        .social-icons {
             display: none;
         }
         
