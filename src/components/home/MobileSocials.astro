@@ -1,0 +1,50 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Social } from '../../types/Social';
+
+const socials = [
+	{
+    name: "Github",
+    url: "https://github.com/Steph-The-Dev/",
+    icon: "mdi:github",
+  },
+	{
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/stephanpfeiffer/",
+	icon: "mdi:linkedin",
+  },
+] as  Social[];
+---
+
+<section class="socials">
+    <div class="social-icons">
+        {socials.map((social) => (
+            <a href={social.url} target={social.url}>
+                <Icon name={social.icon} />
+            </a>
+        ))}
+    </div>
+</section>
+
+<style>
+    .social-icons {
+        display: flex;
+        justify-content: space-around;
+        gap: 1.5rem;
+    }
+    
+    .social-icons a {
+        display: flex;
+        align-items: center;
+        padding-block: .5rem;
+    }
+    
+    [data-icon] {
+        font-size: 2.5rem;
+    }
+
+    @media screen and (width > 640px) {
+        .socials {
+            display: none;
+        }
+</style>
