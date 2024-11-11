@@ -1,22 +1,23 @@
 ---
 import { Icon } from 'astro-icon/components'
+import MobileNavigation from "./MobileNavigation.astro";
 
 const navigationItems = [
-	{ title: "Projects", href: "/projects" },
-	{ title: "Blog", href: "/blog" },
-	{ title: "About Me", href: "/about" },
-	{ title: "Contact", href: "#contact" },
+	{ name: "Projects", url: "/projects" },
+	{ name: "Blog", url: "/blog" },
+	{ name: "About Me", url: "/about" },
+	{ name: "Contact", url: "#contact" },
 ];
 
 const socialIcons = [
 	{
-    title: "Github",
-    href: "https://github.com/Steph-The-Dev/",
+    name: "Github",
+    url: "https://github.com/Steph-The-Dev/",
     icon: "mdi:github",
   },
 	{
-    title: "LinkedIn",
-    href: "https://www.linkedin.com/in/stephanpfeiffer/",
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/stephanpfeiffer/",
 		icon: "mdi:linkedin",
   },
 ];
@@ -31,7 +32,7 @@ const socialIcons = [
           {
             navigationItems.map((item) => (
               <li>
-                <a href={item.href}>{item.title}</a>
+                <a href={item.url}>{item.name}</a>
               </li>
             ))
           }
@@ -46,9 +47,7 @@ const socialIcons = [
         ))
       }
     </div>
-    <div class="mobile-nav">
-        
-    </div>
+    <MobileNavigation items={navigationItems} />
   </nav>
   
 
@@ -93,7 +92,7 @@ const socialIcons = [
       font-size: 2.5rem;
     }
     
-    @media screen and (width < 640px) {
+    @media screen and (width < 800px) {
         .nav-links {
             display: none;
         }

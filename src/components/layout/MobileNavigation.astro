@@ -1,0 +1,220 @@
+---
+// MobileNav.astro
+interface NavItem {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  items: NavItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="mobile-nav">
+  <div class="nav-brand">
+    <button class="hamburger" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  
+  <div class="nav-menu">
+    <div class="menu-overlay"></div>
+    <ul class="menu-items">
+      {items.map((item) => (
+        <li>
+          <a href={item.url}>{item.name}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .mobile-nav {
+    position: relative;
+    /* padding: 1rem; */
+    background: #ffffff;
+  }
+
+  .nav-brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100; /* Increased z-index */
+  }
+
+  .hamburger span {
+    width: 2rem;
+    height: 0.25rem;
+    background: #333;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+  }
+
+  /* Menu overlay */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .nav-menu.active .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Menu container */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 300px;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .menu-items {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: #ffffff;
+    padding-top: 5rem;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    transition: right 0.3s ease-in-out;
+    z-index: 1050; /* Higher than overlay */
+  }
+
+  .nav-menu.active .menu-items {
+    right: 0;
+  }
+
+  .menu-items li {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-menu.active .menu-items li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Staggered animation delay for each item */
+  .menu-items li:nth-child(1) { transition-delay: 0.1s; }
+  .menu-items li:nth-child(2) { transition-delay: 0.2s; }
+  .menu-items li:nth-child(3) { transition-delay: 0.3s; }
+  .menu-items li:nth-child(4) { transition-delay: 0.4s; }
+
+  .menu-items a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    font-size: 1.1rem;
+  }
+
+  /* Hamburger animation classes */
+  .hamburger.active span:first-child {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:last-child {
+    transform: rotate(-45deg);
+  }
+
+  @media screen and (width > 800px) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+</style>
+
+<script>
+  function setupMobileNav() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    let isMenuOpen = false;
+    
+    if (!hamburger || !navMenu) return;
+
+    // Toggle menu function
+    const toggleMenu = (open: boolean) => {
+      isMenuOpen = open;
+      hamburger.classList.toggle('active', open);
+      navMenu.classList.toggle('active', open);
+      
+      // Toggle body scroll
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    // Hamburger click handler
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu(!isMenuOpen);
+    });
+
+    // Document click handler with improved logic
+    document.addEventListener('click', (e) => {
+      if (!isMenuOpen) return;
+      
+      const isClickOutside = !hamburger.contains(e.target as Node) && !navMenu.contains(e.target as Node);
+      
+      if (isClickOutside) {
+        toggleMenu(false);
+      }
+    });
+
+    // Close menu when clicking a nav link
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
+    });
+
+    // Add escape key handler
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        toggleMenu(false);
+      }
+    });
+  }
+
+  // Run setup when the DOM is ready
+  document.addEventListener('DOMContentLoaded', setupMobileNav);
+</script>
+</script>
