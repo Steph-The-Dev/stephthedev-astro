@@ -29,3 +29,26 @@
   font-style: normal;
   font-display: swap;
 }
+
+:root {
+  /* Layouut */
+  --max-width: 1280px;
+  --gutter: 20px;
+
+  /* font sizes */
+  --fs-400: 1rem;
+  --fs-500: 1.5rem;
+  --fs-600: 2rem;
+  --fs-700: 2.5rem;
+  --fs-800: 3rem;
+  --fs-900: 3.5rem;
+
+  /* font families */
+  --ff-sans: 'Inter', sans-serif;
+  --ff-serif: 'Sedan', serif;
+
+  /* font weights */
+  --fw-light: 100;
+  --fw-regular: 400;
+  --fw-bold: 700;
+}
