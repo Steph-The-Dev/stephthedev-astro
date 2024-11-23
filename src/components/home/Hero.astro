@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import testImage from '../../images/test.jpg';
 ---
 
 <main>
     <section>
         <div class="wrapper">
 
-            <div class="column-one">
+            <div class="column one">
                 <div class="tldr">
                     <h1>tl;dr</h1>
                     <p>(too long, didn't read)</p>
@@ -24,9 +26,8 @@
                     <p>From storytelling on television screens to crafting immersive digital experiences, I bring a unique perspective to web development. My 16+ years as a television editor and colorist honed my ability to deliver visually stunning content, while my studies in International Business sharpened my strategic thinking. Now, as a freelance web developer, I focus on creating websites that are both functional and aesthetically engaging, merging creativity with clean, efficient code.</p>
                 </div>
             </div>
-            <div class="column-two">
-                <div class="img">
-                </div>
+            <div class="column two">
+                    <Image src={testImage} alt="A test image to test." />
             </div>
         </div>
     </section>
@@ -37,10 +38,31 @@
     .wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
         gap: 2rem;
+
+        .column {
+            &.one {
+
+            }
+            
+            &.two {
+                height: 0;
+                min-height: 100%;
+                overflow: auto;
+                width: 100%;
+                background-color: red;
+                overflow: hidden;
+                border-radius: 20px;
+                
+                img {
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
     }
     main {
-        outline: auto;
         margin-inline: auto;
         margin-top: 5rem;
         max-width: var(--max-width);
@@ -104,9 +126,9 @@
         text-wrap: pretty;
     }
 
+
+
     h1 {
-        /* font-family: 'Sedan';
-        font-style: italic; */
         font-family: var(--ff-serif);
         font-style: italic;
         font-size: var(--fs-900);
