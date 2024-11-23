@@ -3,18 +3,107 @@
 
 <main>
     <section>
-        <h1>tl;dr</h1>
-        <p>(too long, didn't read)</p>
-        <a href="/about"><p>&rarrlp; get the short story long here</p></a>
+        <div class="wrapper">
+
+            <div class="column-one">
+                <div class="tldr">
+                    <h1>tl;dr</h1>
+                    <p>(too long, didn't read)</p>
+                    <a href="/about"><p>&rarrlp; get the short story long here</p></a>
+                </div>
+                <div class="welcome">
+                    <p>Hi, I am  </p>
+                    <div class="roller">
+                            <p>Stephan</p>
+                            <p>a problem finder</p>
+                            <p>a solution seeker</p>
+                            <p>a web developer</p>
+                    </div>
+                </div>
+                <div class="about-me-short">
+                    <p>From storytelling on television screens to crafting immersive digital experiences, I bring a unique perspective to web development. My 16+ years as a television editor and colorist honed my ability to deliver visually stunning content, while my studies in International Business sharpened my strategic thinking. Now, as a freelance web developer, I focus on creating websites that are both functional and aesthetically engaging, merging creativity with clean, efficient code.</p>
+                </div>
+            </div>
+            <div class="column-two">
+                <div class="img">
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 
-<style>
+<style lang="scss">
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
     main {
         outline: auto;
         margin-inline: auto;
+        margin-top: 5rem;
         max-width: var(--max-width);
     }
+
+    .welcome {
+        display: flex;
+        margin-block: 2rem;
+        gap: .5rem;
+        height: 3.5rem;
+        overflow: hidden;
+        
+        p {
+            font-size: var(--fs-700);
+            font-family: inherit;
+        }
+    }
+
+    
+    .roller {
+        display: inline-block;
+        font-family: var(--ff-sans);
+        font-size:  var(--fs-500);
+        animation: slide 10s ease-in-out infinite;
+        p {
+        font-family: inherit;
+        max-width: fit-content;
+        font-weight: var(--fw-bold);
+        }
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateY(0.125rem);
+        }
+        10% {
+            transform: translateY(0.125rem);
+        }
+        30% {
+            transform: translateY(calc(-3.75rem));
+        }
+        50% {
+            transform: translateY(calc(-7.5rem));
+        }
+        70% {
+            transform: translateY(calc(-11.25rem));
+        }   
+        90% {
+            transform: translateY(calc(-11.25rem));
+        }   
+        100% {
+            transform: translateY(0.125rem);
+        }
+    }
+
+    .about-me-short {
+        font-size: var(--fs-500);
+        font-family: var(--ff-sans);
+        font-weight: var(--fw-light);
+        line-height: 1.5;
+        text-wrap: pretty;
+    }
+
     h1 {
         /* font-family: 'Sedan';
         font-style: italic; */
@@ -24,9 +113,8 @@
         font-weight: var(--fw-light);
     }
 
-    p {
-        font-family: var(--ff-serif);
+    h2 {
         font-size: var(--fs-500);
-        font-weight: var(--fw-light);
     }
+
 </style>
