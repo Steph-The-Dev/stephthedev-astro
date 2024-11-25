@@ -1,6 +1,26 @@
 ---
 import { Image } from 'astro:assets';
 import testImage from '../../images/test.jpg';
+
+import { Icon } from 'astro-icon/components'
+
+const devIcons = [
+	{
+    name: "Vue",
+    url: "https://vuejs.org/",
+    icon: "devicon:vuejs-wordmark",
+  },
+	{
+    name: "Astro",
+    url: "https://astro.build/",
+	icon: "devicon:astro-wordmark",
+  },
+	{
+    name: "AstJavaSccriptro",
+    url: "https://astro.build/",
+	icon: "devicon:javascript",
+  },
+];
 ---
 
 <main>
@@ -30,12 +50,27 @@ import testImage from '../../images/test.jpg';
                     <Image src={testImage} alt="A test image to test." />
             </div>
         </div>
+
+        <div class="tools">
+            <p class="header">what&apos;s in my tool belt</p>
+            <div class="devicons">
+                {
+                    devIcons.map((icon) => (
+                        <a href={icon.url}>
+                            <Icon name={icon.icon} />
+                        </a>
+                    ))
+                }
+            </div>
+            <p>For solo projects I like to use Astro because it let&apos;s me sprinkle in any other technology I need. My favorite framework is Vue and Nuxt, but I also have some experience with React and Next. For automation and machine learning projects I use Python. Generally, I am open to learn new technologies as it benefits the outcome.</p>
+        </div>
     </section>
 </main>
 
 <style lang="scss">
 
     .wrapper {
+        margin-block: 4rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
@@ -49,9 +84,7 @@ import testImage from '../../images/test.jpg';
             &.two {
                 height: 0;
                 min-height: 100%;
-                overflow: auto;
                 width: 100%;
-                background-color: red;
                 overflow: hidden;
                 border-radius: 20px;
                 
@@ -64,7 +97,6 @@ import testImage from '../../images/test.jpg';
     }
     main {
         margin-inline: auto;
-        margin-top: 5rem;
         max-width: var(--max-width);
     }
 
@@ -126,7 +158,16 @@ import testImage from '../../images/test.jpg';
         text-wrap: pretty;
     }
 
+    .tools {
+        .header {
+            font-style: italic;
+            font-size: var(--fs-700);
+        }
+    }
 
+    [data-icon] {
+      font-size: 5rem;
+    }
 
     h1 {
         font-family: var(--ff-serif);

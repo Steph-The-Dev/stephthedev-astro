@@ -52,3 +52,9 @@
   --fw-regular: 400;
   --fw-bold: 700;
 }
+
+/*  utilitiy classes */
+
+.header {
+  font-family: var(--ff-serif);
+}
