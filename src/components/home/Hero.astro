@@ -16,8 +16,8 @@ const devIcons = [
 	icon: "devicon:astro-wordmark",
   },
 	{
-    name: "AstJavaSccriptro",
-    url: "https://astro.build/",
+    name: "JavaScript",
+    url: "",
 	icon: "devicon:javascript",
   },
 ];
@@ -69,7 +69,19 @@ const devIcons = [
 
 <style lang="scss">
 
-    .wrapper {
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            .column {
+                &.one {
+                    margin-inline: 1rem;
+                }
+            }
+            
+        }
+    @media screen and (min-width: 1000px) {
+        .wrapper {
         margin-block: 4rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -95,6 +107,11 @@ const devIcons = [
             }
         }
     }
+
+
+
+    }
+    
     main {
         margin-inline: auto;
         max-width: var(--max-width);
@@ -159,6 +176,7 @@ const devIcons = [
     }
 
     .tools {
+        margin-inline: 1rem;
         .header {
             font-style: italic;
             font-size: var(--fs-700);
