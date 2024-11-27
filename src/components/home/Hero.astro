@@ -76,11 +76,15 @@ const devIcons = [
         .wrapper {
             display: grid;
             grid-template-columns: 1fr;
+            gap: 1rem;
 
             .column {
                 padding-bottom: 2rem;
                 &.one {
                     margin-inline: 1rem;
+                }
+                &.two {
+                    margin: 0;
                 }
             }
             
@@ -88,6 +92,7 @@ const devIcons = [
     @media screen and (min-width: 1080px) {
         .wrapper {
         margin-block: 4rem;
+        margin-inline: 1rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
@@ -104,9 +109,9 @@ const devIcons = [
                 min-height: 100%;
                 width: 100%;
                 overflow: hidden;
-                border-radius: 20px;
                 
                 img {
+                    border-radius: 20px;
                     height: 100%;
                     object-fit: cover;
                 }
@@ -170,6 +175,7 @@ const devIcons = [
     img {
         max-height: 400px;
         object-fit: cover;
+        border-radius: 0px;
         
     }
     .welcome {
