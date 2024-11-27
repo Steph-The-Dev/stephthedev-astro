@@ -5,20 +5,40 @@ import testImage from '../../images/test.jpg';
 import { Icon } from 'astro-icon/components'
 
 const devIcons = [
+    {
+    name: "HTML 5",
+    url: "",
+    icon: "devicon:html5",
+  },
+    {
+    name: "CSS 3",
+    url: "",
+    icon: "devicon:css3",
+  },
+    {
+    name: "Tailwind",
+    url: "",
+    icon: "devicon:tailwindcss",
+  },
+    {
+    name: "JavaScript",
+    url: "",
+    icon: "devicon:javascript",
+  },
+    {
+    name: "TypeScript",
+    url: "",
+    icon: "devicon:typescript",
+  },
+  {
+  name: "Astro",
+  url: "https://astro.build/",
+  icon: "devicon:astro",
+},
 	{
     name: "Vue",
     url: "https://vuejs.org/",
-    icon: "devicon:vuejs-wordmark",
-  },
-	{
-    name: "Astro",
-    url: "https://astro.build/",
-	icon: "devicon:astro-wordmark",
-  },
-	{
-    name: "JavaScript",
-    url: "",
-	icon: "devicon:javascript",
+    icon: "devicon:vuejs",
   },
 ];
 ---
@@ -56,7 +76,7 @@ const devIcons = [
                 <div class="devicons">
                     {
                         devIcons.map((icon) => (
-                            <a href={icon.url}>
+                            <a href={icon.url} title={icon.name}>
                                 <Icon name={icon.icon} />
                             </a>
                         ))
@@ -71,7 +91,7 @@ const devIcons = [
 
 <style lang="scss">
     section {
-        margin-block: 2rem;
+        margin-bottom: 2rem;
     }
         .wrapper {
             display: grid;
@@ -179,6 +199,8 @@ const devIcons = [
         
     }
     .welcome {
+        gap: .5rem;
+
         p {
 
             font-size: var(--fs-600);
@@ -236,9 +258,13 @@ const devIcons = [
         .devicons {
             text-align: center;
             margin: 2rem;
+            a {
+                margin-inline: 1rem;
+                padding-bottom: 1rem;
+            }
         }
     }
-
+    
     [data-icon] {
       font-size: 5rem;
     }
