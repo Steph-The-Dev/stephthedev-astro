@@ -224,6 +224,14 @@ const devIcons = [
         .header {
             font-style: italic;
             font-size: var(--fs-700);
+
+            ::after {
+                content: 'Hello';
+                display: block;
+                width: 100%;
+                height: 5px;
+                background-color: var(--clr-primary-400);
+            }
         }
         .devicons {
             text-align: center;

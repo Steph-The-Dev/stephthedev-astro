@@ -52,6 +52,8 @@
   --fw-light: 100;
   --fw-regular: 400;
   --fw-bold: 700;
+
+  --clr-primary-400: #0077cc;
 }
 
 /*  utilitiy classes */
