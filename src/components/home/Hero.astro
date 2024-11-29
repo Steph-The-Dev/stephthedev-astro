@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import testImage from '../../images/test.jpg';
+import portrait from '../../images/Stephan-Pfeiffer.jpg';
 
 import { Icon } from 'astro-icon/components'
 
@@ -47,11 +47,6 @@ const devIcons = [
     <section>
         <div class="wrapper">
             <div class="column one">
-                <div class="tldr">
-                    <h1>tl;dr</h1>
-                    <p>(too long, didn't read)</p>
-                    <a href="/about"><p>&rarrlp; get the short story long here</p></a>
-                </div>
                 <div class="welcome">
                     <p>Hi, I am  </p>
                     <div class="roller">
@@ -61,12 +56,17 @@ const devIcons = [
                             <p>a web developer</p>
                     </div>
                 </div>
+                <div class="tldr">
+                    <h1>tl;dr</h1>
+                    <p>(too long, didn't read)</p>
+                    <a href="/about"><p>&rarrlp; get the short story long here</p></a>
+                </div>
                 <div class="paragraph">
                     <p>From storytelling on television screens to crafting immersive digital experiences, I bring a unique perspective to web development. My 16+ years as a television editor and colorist honed my ability to deliver visually stunning content, while my studies in International Business sharpened my strategic thinking. Now, as a freelance web developer, I focus on creating websites that are both functional and aesthetically engaging, merging creativity with clean, efficient code.</p>
                 </div>
             </div>
             <div class="column two">
-                    <Image src={testImage} alt="A test image to test." />
+                    <Image src={portrait} alt="A test image to test." />
             </div>
         </div>
         </section>
@@ -114,7 +114,7 @@ const devIcons = [
         margin-block: 4rem;
         margin-inline: 1rem;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
         grid-template-rows: auto;
         gap: 2rem;
 
@@ -150,7 +150,7 @@ const devIcons = [
 
     .welcome {
         display: flex;
-        margin-block: 2rem;
+        margin-bottom: 2rem;
         gap: 1rem;
         height: 3.5rem;
         overflow: hidden;
@@ -164,9 +164,13 @@ const devIcons = [
             animation: slide 10s ease-in-out infinite;
             p {
             font-weight: var(--fw-bold);
+            }
         }
     }
-}
+
+    .tldr {
+        margin-bottom: 2rem;
+    }
 @keyframes slide {
         0% {
             transform: translateY(0.125rem);
@@ -198,13 +202,16 @@ const devIcons = [
 
 @media screen and (max-width: 1080px) {
     img {
-        max-height: 400px;
+        max-height: 600px;
         object-fit: cover;
         border-radius: 0px;
         
     }
     .welcome {
         gap: .5rem;
+        margin-block: 1rem;
+        height: 2.5rem;
+        overflow: hidden;
 
         p {
 
