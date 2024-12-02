@@ -54,61 +54,62 @@ const socialIcons = [
   
 
   <style lang="scss">
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      outline: 2px solid black;
-      padding: 1.2rem 1rem;
-      font-family: 'Inter';
-      font-style: normal;
-      font-size: 1.5rem;
-    }
-    
-    .navbar-name {
-      font-weight: bold;
-    }
+          .navbar {
+            display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem .75rem;
+        font-family: 'Inter';
+        font-style: normal;
+        font-size: 1.5rem;
+          }
     
     .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .mobile-nav {
         display: none;
     }
 
     .social-icons {
-      display: flex;
-      gap: 1.5rem;
-      flex-direction: row;
+      display: none;
     }
     
-    .social-icons {
-      a {
+    .mobile-nav {
         display: flex;
-        [data-icon] {
-          font-size: 2.5rem;
-          align-items: center;
-          justify-content: center;
+    }
+    @media screen and (width > 800px) {
+      .navbar {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
         }
-
+      
+      .navbar-name {
+        font-weight: bold;
       }
-    }
-    
-    
-    @media screen and (width < 800px) {
-        .nav-links {
-            display: none;
-        }
-
-        .social-icons {
+      
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+  
+      .mobile-nav {
           display: none;
+      }
+  
+      .social-icons {
+        display: flex;
+        gap: 1.5rem;
+        flex-direction: row;
+      }
+      
+      .social-icons {
+        a {
+          display: flex;
+          [data-icon] {
+            font-size: 2.5rem;
+            align-items: center;
+            justify-content: center;
+          }
+  
         }
-        
-        .mobile-nav {
-            display: flex;
-        }
-        
+      }
+      
     }
-  </style>
+    </style>
