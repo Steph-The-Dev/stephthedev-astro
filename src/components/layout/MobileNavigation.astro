@@ -3,6 +3,7 @@
 interface NavItem {
   name: string;
   url: string;
+  isShown: boolean;
 }
 
 interface Props {
@@ -25,9 +26,11 @@ const { items } = Astro.props;
     <div class="menu-overlay"></div>
     <ul class="menu-items">
       {items.map((item) => (
+        item.isShown && (
         <li>
           <a href={item.url}>{item.name}</a>
         </li>
+        )
       ))}
     </ul>
   </div>

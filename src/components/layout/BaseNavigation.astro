@@ -3,10 +3,10 @@ import { Icon } from 'astro-icon/components'
 import MobileNavigation from "./MobileNavigation.astro";
 
 const navigationItems = [
-	{ name: "Projects", url: "/projects" },
-	{ name: "Blog", url: "/blog" },
-	{ name: "About Me", url: "/about" },
-	{ name: "Contact", url: "#contact" },
+	{ name: "Projects", url: "/projects", isShown: false },
+	{ name: "Blog", url: "/blog", isShown: false },
+	{ name: "About Me", url: "/about", isShown: true },
+	{ name: "Contact", url: "#contact", isShown: true },
 ];
 
 const socialIcons = [
@@ -31,9 +31,11 @@ const socialIcons = [
         <ul class="nav-links">
           {
             navigationItems.map((item) => (
-              <li>
-                <a href={item.url}>{item.name}</a>
-              </li>
+              item.isShown && (
+                <li>
+                  <a href={item.url}>{item.name}</a>
+                </li>
+              )
             ))
           }
         </ul>
@@ -51,7 +53,7 @@ const socialIcons = [
   </nav>
   
 
-  <style>
+  <style lang="scss">
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -80,18 +82,20 @@ const socialIcons = [
       display: flex;
       gap: 1.5rem;
       flex-direction: row;
-      margin-bottom: 2rem;
     }
     
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .social-icons {
+      a {
+        display: flex;
+        [data-icon] {
+          font-size: 2.5rem;
+          align-items: center;
+          justify-content: center;
+        }
 
-    [data-icon] {
-      font-size: 2.5rem;
+      }
     }
+    
     
     @media screen and (width < 800px) {
         .nav-links {
