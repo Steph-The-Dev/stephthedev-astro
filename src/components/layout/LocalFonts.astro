@@ -18,9 +18,9 @@ import { AstroFont } from "astro-font";
               path: join(process.cwd(), 'public', 'fonts', 'InterItalic.ttf')
             },
           ],
-          preload: false,
+          preload: true,
           display: "swap",
-          selector: ".inter",
+          cssVariable: "ff-inter",
           fallback: "sans-serif",
         },
         {
@@ -35,9 +35,9 @@ import { AstroFont } from "astro-font";
               path: join(process.cwd(), 'public', 'fonts', 'SedanItalic.ttf')
             },
           ],
-          preload: false,
+          preload: true,
           display: "swap",
-          selector: ".sedan",
+          cssVariable: "ff-sedan",
           fallback: "serif",
         },
       ]}

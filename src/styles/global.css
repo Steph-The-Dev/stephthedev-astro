@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'SedanItalic';
   src: url('/fonts/SedanItalic.ttf') format('ttf');
   font-weight: normal;
@@ -28,7 +28,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 :root {
   /* Layouut */
@@ -61,7 +61,7 @@
 }
 
 h1 {
-  font-family: var(--ff-serif);
+  font-family: var(--ff-sedan);
   font-style: italic;
   font-size: var(--fs-900);
   font-weight: var(--fw-light);
