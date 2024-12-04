@@ -2,6 +2,8 @@
 const { title } = Astro.props;
 
 import LocalFonts from "./LocalFonts.astro";
+
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <head>
@@ -12,3 +14,5 @@ import LocalFonts from "./LocalFonts.astro";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 </head>
+
+<ClientRouter />
