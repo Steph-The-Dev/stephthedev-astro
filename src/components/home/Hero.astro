@@ -93,11 +93,53 @@ const devIcons = [
         <section class="wrapper contact" id="contact">
             <p class="header">contact</p>
             <p class="paragraph">If you're interested in working with me, please get in touch.</p>
+            <p class="paragraph phone"> 
+                <a href="tel:+4915679301464" class="link">
+                    <Icon name="mdi:phone" id="icon_phone"/>
+                 +49 15679 301464
+                </a>
+            </p>
+            <p class="paragraph mail"> 
+
+                <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#97;&#105;&#108;&#64;&#115;&#116;&#101;&#112;&#104;&#116;&#104;&#101;&#100;&#101;&#118;&#46;&#100;&#101;" class="link" aria-label="E-Mail-Adresse von Stephan Pfeiffer">
+                  <Icon name="mdi:alternate-email" id="icon_email"/>
+                  &#83;&#116;&#101;&#112;&#104;&#97;&#110;&#32;&#80;&#102;&#101;&#105;&#102;&#102;&#101;&#114;
+                </a>
+            </p>
+            </p>
         </section>
     </section>
 </main>
 
 <style lang="scss">
+        main {
+        margin-inline: auto;
+        max-width: var(--max-width);
+    }
+
+    .welcome {
+        display: flex;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        height: 3.5rem;
+        overflow: hidden;
+        
+        p {
+            font-size: var(--fs-700);
+            font-family: inherit;
+        }
+        .roller {
+            display: inline-block;
+            animation: slide 10s ease-in-out infinite;
+            p {
+            font-weight: var(--fw-bold);
+            }
+        }
+    }
+
+    .tldr {
+        margin-bottom: 2rem;
+    }
     section {
         margin-bottom: 2rem;
     }
@@ -150,34 +192,7 @@ const devIcons = [
         }
     }
     
-    main {
-        margin-inline: auto;
-        max-width: var(--max-width);
-    }
 
-    .welcome {
-        display: flex;
-        margin-bottom: 2rem;
-        gap: 1rem;
-        height: 3.5rem;
-        overflow: hidden;
-        
-        p {
-            font-size: var(--fs-700);
-            font-family: inherit;
-        }
-        .roller {
-            display: inline-block;
-            animation: slide 10s ease-in-out infinite;
-            p {
-            font-weight: var(--fw-bold);
-            }
-        }
-    }
-
-    .tldr {
-        margin-bottom: 2rem;
-    }
 @keyframes slide {
         0% {
             transform: translateY(0.125rem);
@@ -205,6 +220,9 @@ const devIcons = [
 
     [data-icon] {
         font-size: 5rem;
+        &#icon_email, &#icon_phone {
+            font-size: 2.5rem;
+        }
     }
 
 @media screen and (max-width: 800px) {
@@ -257,7 +275,6 @@ const devIcons = [
         }
     }
 
-
         .devicons {
             text-align: center;
             margin: 2rem;
@@ -267,15 +284,10 @@ const devIcons = [
             }
         }
 
-    h1 {
-        font-family: var(--ff-serif);
-        font-style: italic;
-        font-size: var(--fs-900);
-        font-weight: var(--fw-light);
-    }
-
-    h2 {
-        font-size: var(--fs-500);
-    }
-
+        .link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+            }
 </style>

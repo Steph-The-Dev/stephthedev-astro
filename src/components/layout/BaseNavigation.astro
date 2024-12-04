@@ -43,7 +43,7 @@ const socialIcons = [
     <div class="social-icons">
       {
         socialIcons.map((icon) => (
-          <a href={icon.url}>
+          <a href={icon.url} target="_blank" rel="noopener noreferrer">
             <Icon name={icon.icon} />
           </a>
         ))

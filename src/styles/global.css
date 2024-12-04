@@ -60,6 +60,17 @@
   --clr-primary-400: #585858;
 }
 
+h1 {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: var(--fs-900);
+  font-weight: var(--fw-light);
+}
+
+h2 {
+  font-size: var(--fs-500);
+}
+
 /*  utilitiy classes */
 
 .header {
@@ -83,4 +94,5 @@
   font-weight: var(--fw-light);
   line-height: 1.5;
   text-wrap: pretty;
+  margin-bottom: 1rem;
 }
