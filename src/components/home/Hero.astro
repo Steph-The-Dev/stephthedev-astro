@@ -74,9 +74,7 @@ const devIcons = [
                 <div class="devicons">
                     {
                         devIcons.map((icon) => (
-                            <a href={icon.url} title={icon.name}>
-                                <Icon name={icon.icon} />
-                            </a>
+                            <Icon name={icon.icon} title={icon.name}/>
                         ))
                     }
                 </div>
@@ -263,7 +261,7 @@ const devIcons = [
         .devicons {
             text-align: center;
             margin: 2rem;
-            a {
+            [data-icon] {
                 margin-inline: 1rem;
                 padding-bottom: 1rem;
             }
