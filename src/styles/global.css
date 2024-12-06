@@ -60,6 +60,10 @@
   --clr-primary-400: #585858;
 }
 
+body {
+  width: 100dvw;
+}
+
 h1 {
   font-family: var(--ff-sedan);
   font-style: italic;
@@ -94,5 +98,4 @@ h2 {
   font-weight: var(--fw-light);
   line-height: 1.5;
   text-wrap: pretty;
-  margin-bottom: 1rem;
 }
