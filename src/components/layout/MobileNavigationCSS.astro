@@ -55,7 +55,7 @@ const { items } = Astro.props;
   position: relative;
   /* top: var(--hamburger-margin); */
   /* right: calc(var(--hamburger-margin)); */
-  z-index: 2;
+  z-index: 1000;
   cursor: pointer;
 }
 
@@ -115,10 +115,11 @@ const { items } = Astro.props;
   translate: 100%;
   padding: 0.5rem 2rem;
   padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+  padding-bottom: 2rem;
   background-color: var(--foreground);
   color: var(--background);
   width: 15rem;
-  height: 100vh;
+  height: min-content;
   position: absolute;
   top: 0;
   right: -15rem;
@@ -129,6 +130,7 @@ const { items } = Astro.props;
 .hamburger-menu:has(input:checked) + .sidebar {
   translate: -100%;
   display: block;
+  z-index: 999;
 }
 
 @media screen and (width > 800px) {
