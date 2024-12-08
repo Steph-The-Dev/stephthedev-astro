@@ -1,6 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components'
 import MobileNavigation from "./MobileNavigation.astro";
+import MobileNavigationELIAN from "./MobileNavigationELIAN.astro";
+import MobileNavigationCSS from "./MobileNavigationCSS.astro";
 
 const navigationItems = [
 	{ name: "Projects", url: "/projects", isShown: false },
@@ -49,7 +51,7 @@ const socialIcons = [
         ))
       }
     </div>
-    <MobileNavigation items={navigationItems} />
+    <MobileNavigationCSS items={navigationItems} />
   </nav>
   
 
@@ -58,11 +60,14 @@ const socialIcons = [
             display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.2rem 2rem;
+        padding: .75rem 2rem;
         font-family: 'Inter';
         font-style: normal;
-        font-size: 1.5rem;
-          }
+        font-size: 1rem;
+        &-name {
+          font-size: var(--fs-450);
+        }
+      }
     
     .nav-links {
         display: none;
@@ -73,15 +78,18 @@ const socialIcons = [
     }
     
     .mobile-nav {
-        display: flex;
+      display: flex;
     }
+    
     @media screen and (width > 800px) {
       .navbar {
+        padding: 1.2rem 2rem;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+        font-size: 1.25rem;
         }
       
       .navbar-name {
-        font-weight: bold;
+        font-size: var(--fs-500);
       }
       
       .nav-links {
@@ -92,14 +100,12 @@ const socialIcons = [
       .mobile-nav {
           display: none;
       }
-  
+
+      
       .social-icons {
         display: flex;
         gap: 1.5rem;
         flex-direction: row;
-      }
-      
-      .social-icons {
         a {
           display: flex;
           [data-icon] {

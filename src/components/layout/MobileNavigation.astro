@@ -13,9 +13,9 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<nav class="mobile-nav">
-  <div class="nav-brand">
-    <button class="hamburger" aria-label="Toggle Menu">
+<nav class="mobile-nav" >
+  <div class="nav-brand" >
+    <button class="hamburger" aria-label="Toggle Menu" >
       <span></span>
       <span></span>
       <span></span>
@@ -27,7 +27,7 @@ const { items } = Astro.props;
     <ul class="menu-items">
       {items.map((item) => (
         item.isShown && (
-        <li>
+          <li>
           <a href={item.url}>{item.name}</a>
         </li>
         )
@@ -36,12 +36,12 @@ const { items } = Astro.props;
   </div>
 </nav>
 
-<style>
+<style is:global>
   .mobile-nav {
     position: relative;
     /* padding: 1rem; */
     background: #ffffff;
-    z-index: 1000;
+    z-index: 1005;
   }
 
   .nav-brand {
@@ -83,7 +83,7 @@ const { items } = Astro.props;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
-    z-index: 1000;
+    z-index: 999;
   }
 
   .nav-menu.active .menu-overlay {
@@ -168,22 +168,21 @@ const { items } = Astro.props;
 </style>
 
 <script>
-  function setupMobileNav() {
+
+    document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     let isMenuOpen = false;
     
     if (!hamburger || !navMenu) return;
-
+  
     // Toggle menu function
     const toggleMenu = (open: boolean) => {
-      isMenuOpen = open;
-      hamburger.classList.toggle('active', open);
-      navMenu.classList.toggle('active', open);
-      
-      // Toggle body scroll
-      document.body.style.overflow = open ? 'hidden' : '';
-    };
+    isMenuOpen = open;
+    hamburger.classList.toggle('active', open);
+    navMenu.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
 
     // Hamburger click handler
     hamburger.addEventListener('click', (e) => {
@@ -191,16 +190,7 @@ const { items } = Astro.props;
       toggleMenu(!isMenuOpen);
     });
 
-    // Document click handler with improved logic
-    document.addEventListener('click', (e) => {
-      if (!isMenuOpen) return;
-      
-      const isClickOutside = !hamburger.contains(e.target as Node) && !navMenu.contains(e.target as Node);
-      
-      if (isClickOutside) {
-        toggleMenu(false);
-      }
-    });
+
 
     // Close menu when clicking a nav link
     const navLinks = navMenu.querySelectorAll('a');
@@ -217,7 +207,7 @@ const { items } = Astro.props;
       }
     });
   }
-
+)
   // Run setup when the DOM is ready
-  document.addEventListener('DOMContentLoaded', setupMobileNav);
+  // document.addEventListener('DOMContentLoaded', setupMobileNav);
 </script>
