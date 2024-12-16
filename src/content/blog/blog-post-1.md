@@ -1,7 +1,7 @@
 ---
-slug: my-custom-id/supports/slashes
-title: My Blog Post
-description: This is a blog post about something.
+id: my-first-blog-post
+title: My First Blog Post
+description: This is a blog post about me starting my blog.
 pubDate: 'Dec 16 2024'
 ---
 
