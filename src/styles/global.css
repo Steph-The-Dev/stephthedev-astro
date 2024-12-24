@@ -73,6 +73,11 @@ h2 {
 }
 
 /*  utilitiy classes */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
 
 .header {
   font-family: var(--ff-serif);

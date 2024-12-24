@@ -7,13 +7,23 @@ import MobileSocials from "../components/home/MobileSocials.astro";
 import "../styles/reset.css"
 import "../styles/global.css"
 
+export interface Props {
+	title: string;
+	description: string;
+	classList?: string;
+	pageTitle?: string;
+	socialImg?: URL;
+}
+
+const { title, description, classList, pageTitle, socialImg } = Astro.props;
+
 ---
 <!DOCTYPE html>
 <html lang="en">
 	<body>
 		<div class="head">
-			<BaseHead {...Astro.props} />
-			<BaseNavigation />
+			<BaseHead title={title} description={description} />
+			<BaseNavigation pageTitle={pageTitle} />
 			<MobileSocials/>
 		</div>
 		<main>
