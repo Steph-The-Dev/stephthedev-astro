@@ -1,5 +1,5 @@
 ---
-export const partial = true;
+// export const partial = true;
 
 import { Image } from 'astro:assets';
 import portrait from '../../images/Stephan-Pfeiffer.jpg';
@@ -40,7 +40,7 @@ const devIcons = [
 
 <main>
     <section>
-        <div class="wrapper intro">
+        <div class="wrapper intro upperline">
             <div class="column one">
                 <div class="welcome">
                     <p>Hi, I am  </p>
@@ -65,6 +65,7 @@ const devIcons = [
             </div>
         </div>
         </section>
+
         <section>
             <div class="wrapper tools">
                 <p class="header">what&apos;s in my tool belt</p>
@@ -77,16 +78,18 @@ const devIcons = [
                 </div>
                 <p class="paragraph">For solo projects I like to use Astro because it let&apos;s me sprinkle in any other technology I need. My favorite framework is Vue and Nuxt, but I also have some experience with React and Next. For automation and machine learning projects I use Python. Generally, I am open to learn new technologies as it benefits the outcome.</p>
             </div>
-
         </section>
+
         <section class="wrapper projects">
             <p class="header">projects</p>
             <p class="paragraph">coming soon...</p>
         </section>
-        <section class="wrapper blog">
+
+        <!-- <section class="wrapper blog">
             <p class="header">blog</p>
             <p class="paragraph">coming soon...</p>
-        </section>
+        </section> -->
+        
         <section class="wrapper contact" id="contact">
             <p class="header">contact</p>
             <p class="paragraph">If you're interested in working with me, please get in touch.</p>
@@ -109,10 +112,7 @@ const devIcons = [
 </main>
 
 <style lang="scss">
-        main {
-        margin-inline: auto;
-        max-width: var(--max-width);
-    }
+
 
     .welcome {
         display: flex;
@@ -148,60 +148,7 @@ const devIcons = [
             }
         }
     }
-    section {
-        margin-bottom: 2rem;
-    }
-        .wrapper {
-            &.intro {
-                display: grid;
-                grid-template-columns: 1fr;
-            }
-            margin-inline: 1rem;
-            &.tools {
-            }
-            &.projects, &.blog {
-                text-align: center;
-            }
-            &.contact {
-                text-align: center;
-                > p {
-                    margin-bottom: .5rem;
-                }
-            }
-            
-        }
-    @media screen and (width > 800px) {
-        .wrapper {
-            margin-bottom: 4rem;
-            &.intro {
-                display: grid;
-                grid-template-columns: 2fr 1fr;
-                grid-template-rows: auto;
-                gap: 2rem;
-                .column {
-                    padding-top: 2rem;
-                    &.one {
-    
-                    }
-                    
-                    &.two {
-                        height: 0;
-                        min-height: 100%;
-                        overflow: hidden;
-                        
-                        img {
-                            height: 100%;
-                            object-fit: cover;
-                            border-radius: 20px;
 
-                        }
-                    }
-                }
-
-            }
-
-        }
-    }
     
 
 @keyframes slide {

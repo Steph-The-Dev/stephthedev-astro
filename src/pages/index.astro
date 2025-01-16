@@ -1,8 +1,11 @@
 ---
+import RecentBlogPosts from "../components/generic/RecentBlogPosts.astro";
 import Hero from "../components/home/Hero.astro";
+
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Home" pageTitle="Stephan Pfeiffer | Web Developer" description="Stephan Pfeiffer | Web Developer">
     <Hero/>
+    <RecentBlogPosts count={3}/>
 </BaseLayout>

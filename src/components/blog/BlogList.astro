@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import BlogSummaryCard from "./BlogSummaryCard.astro";
+
+export interface Props {
+	posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="blog__card">
+	{
+		posts.map((post) => {
+			return (
+				<li>
+					<BlogSummaryCard post={post} />
+				</li>
+			);
+		})
+	}
+</ul>
+
+<style>
+	.blog__card {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1rem;
+
+	}
+</style>
