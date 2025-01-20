@@ -58,7 +58,9 @@
   --fw-regular: 400;
   --fw-bold: 700;
 
-  --clr-primary-400: #585858;
+  --clr-primary-400: rgba(89, 89, 89, 0.5);
+  --clr-btn-primary: #dfc1a5;
+  --clr-btn-primary_hover: #dfc1a5af;
 }
 
 h1 {
@@ -83,6 +85,7 @@ h2 {
   font-family: var(--ff-serif);
   font-style: italic;
   font-size: var(--fs-700);
+  text-align: center;
   &::before {
     display: block;
     content: '';
@@ -130,7 +133,7 @@ section {
 }
 @media screen and (width > 800px) {
   .wrapper {
-    margin-bottom: 4rem;
+    /* margin-bottom: 2rem; */
     &.intro {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -160,7 +163,7 @@ section {
 /* Blog Card Styles */
 .blog__card {
   padding: 1rem;
-  background-color: var(--color-background-offset);
+  background-color: hsla(0, 0%, 35%, 0.5);
   border-radius: 12px;
   height: 100%;
   display: flex;
@@ -256,11 +259,18 @@ section {
 /* Blog Grid Layout */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
   margin-bottom: 2rem;
   list-style: none;
   padding: 0;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .blog-grid li {

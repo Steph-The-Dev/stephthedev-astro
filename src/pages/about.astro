@@ -1,30 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BackToHome from "../components/shared/BackToHome.astro";
 ---
 
 <BaseLayout title="About me" pageTitle="Stephan Pfeiffer | Web Developer" description="This page tells you more about me.">
-    <div class="wrapper">
-        <div class="about">
+        <BackToHome />
+        <div class="wrapper">
+            <div class="about">
 
-            <h1>short story long</p>
-            <p class="paragraph">I was born a month before Pac-Man was released. A few years later during high school I got my first PC (486 DX-33 8MB RAM) and soon got hooked with everything computer related. Ever since I got my first ready-made PC I have always been building my systems myself from scratch. I&apos;ve then became the go to guy in our family if there were PC problems.
-            </p>
-            <p class="paragraph">    
-            I dabbled in Turbo Pascal and Delphi and nothing of importance came out of it. We were one of the first housholds in our area to have two phone lines, so that my modem wouldn&apos;t block the only phone line.
-            </p>
-            <p class="paragraph">
-            After high school I went to study International Business with a major in Marketing Management and two minors in English and Spanish. I really liked the combination and it allowed me to study abroad. So I&apos;ve been to (in historical order) Chile, Spain, Indonesia, New Zealand and Brazil. I always had a passion for the creative arts especially film and television. So I went to become a film editor and colorist which led me to Cologne.
-            </p>
-            <p class="paragraph">
-            Almost 16 years later I still like the creative arts but feel like I need to do something new. My interest in all computer relatedthings and the advancements of the recent years has led me to pursue a career in web development. I&apos;ve always been fascinated by the internet and how it works. So I started learning HTML, CSS, and JavaScript. I&apos;ve also been learning about web design and UI/UX design.
-            </p>
+                <h1>short story long</h1>
+                <p class="paragraph">I was born a month before Pac-Man was released. A few years later during high school I got my first PC (486 DX-33 8MB RAM) and soon got hooked with everything computer related. Ever since I got my first ready-made PC I have always been building my systems myself from scratch. I&apos;ve then became the go to guy in our family if there were PC problems.
+                </p>
+                <p class="paragraph">    
+                I dabbled in Turbo Pascal and Delphi and nothing of importance came out of it. We were one of the first housholds in our area to have two phone lines, so that my modem wouldn&apos;t block the only phone line.
+                </p>
+                <p class="paragraph">
+                After high school I went to study International Business with a major in Marketing Management and two minors in English and Spanish. I really liked the combination and it allowed me to study abroad. So I&apos;ve been to (in historical order) Chile, Spain, Indonesia, New Zealand and Brazil. I always had a passion for the creative arts especially film and television. So I went to become a film editor and colorist which led me to Cologne.
+                </p>
+                <p class="paragraph">
+                Almost 16 years later I still like the creative arts but feel like I need to do something new. My interest in all computer relatedthings and the advancements of the recent years has led me to pursue a career in web development. I&apos;ve always been fascinated by the internet and how it works. So I started learning HTML, CSS, and JavaScript. I&apos;ve also been learning about web design and UI/UX design.
+                </p>
 
-            <p class="paragraph">
-                Hobbies: my family, running, gaming (started with the NES World Cup Edition 1990), but rarely have the time for it now
-            </p>
-            <p class="paragraph">
-                Interests: movies, travel, computer science,computer vision, machine learning, AI, and the list goes on...
-            </p>
+                <p class="paragraph">
+                    Hobbies: my family, running, gaming (started with the NES World Cup Edition 1990), but rarely have the time for it now
+                </p>
+                <p class="paragraph">
+                    Interests: movies, travel, computer science,computer vision, machine learning, AI, and the list goes on...
+                </p>
+            </div>
         </div>
     </div>
 </BaseLayout>
@@ -39,17 +42,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         font-family: var(--ff-serif);
     }
 
-.about {
-    max-width: 1280px;
-    font-family: var(--ff-sans);
-    line-height: 1.6;
-    color: #333;
-    padding: 2rem;
-}
+    .about {
+        max-width: 1280px;
+        font-family: var(--ff-sans);
+        line-height: 1.6;
+        color: #333;
+    }
 
-.paragraph {
-    text-wrap: pretty;
-    text-align: justify;
-    margin-bottom: 1rem;
+    .paragraph {
+        text-wrap: pretty;
+        text-align: justify;
+        margin-bottom: 1rem;
+    }
+
+    .container {
+        // width: min(100% - 2rem, 70rem);
+        margin-inline: auto;
+        padding-inline: var(--container-padding, 1rem);
     }
 </style>

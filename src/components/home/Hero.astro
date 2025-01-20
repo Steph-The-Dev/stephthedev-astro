@@ -3,39 +3,6 @@
 
 import { Image } from 'astro:assets';
 import portrait from '../../images/Stephan-Pfeiffer.jpg';
-
-import { Icon } from 'astro-icon/components'
-
-const devIcons = [
-    {
-    name: "HTML 5",
-    icon: "devicon:html5",
-  },
-    {
-    name: "CSS 3",
-    icon: "devicon:css3",
-  },
-    {
-    name: "Tailwind",
-    icon: "devicon:tailwindcss",
-  },
-    {
-    name: "JavaScript",
-    icon: "devicon:javascript",
-  },
-    {
-    name: "TypeScript",
-    icon: "devicon:typescript",
-  },
-  {
-  name: "Astro",
-  icon: "devicon:astro",
-},
-	{
-    name: "Vue",
-    icon: "devicon:vuejs",
-  },
-];
 ---
 
 <main>
@@ -64,50 +31,6 @@ const devIcons = [
                     <Image src={portrait} alt="A portrait of Stephan Pfeiffer." />
             </div>
         </div>
-        </section>
-
-        <section>
-            <div class="wrapper tools">
-                <p class="header">what&apos;s in my tool belt</p>
-                <div class="devicons">
-                    {
-                        devIcons.map((icon) => (
-                            <Icon name={icon.icon} title={icon.name}/>
-                        ))
-                    }
-                </div>
-                <p class="paragraph">For solo projects I like to use Astro because it let&apos;s me sprinkle in any other technology I need. My favorite framework is Vue and Nuxt, but I also have some experience with React and Next. For automation and machine learning projects I use Python. Generally, I am open to learn new technologies as it benefits the outcome.</p>
-            </div>
-        </section>
-
-        <section class="wrapper projects">
-            <p class="header">projects</p>
-            <p class="paragraph">coming soon...</p>
-        </section>
-
-        <!-- <section class="wrapper blog">
-            <p class="header">blog</p>
-            <p class="paragraph">coming soon...</p>
-        </section> -->
-        
-        <section class="wrapper contact" id="contact">
-            <p class="header">contact</p>
-            <p class="paragraph">If you're interested in working with me, please get in touch.</p>
-            <p class="paragraph phone"> 
-                <a href="tel:+4915679301464" class="link">
-                    <Icon name="mdi:phone" id="icon_phone"/>
-                 +49 15679 301464
-                </a>
-            </p>
-            <p class="paragraph mail"> 
-
-                <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#97;&#105;&#108;&#64;&#115;&#116;&#101;&#112;&#104;&#116;&#104;&#101;&#100;&#101;&#118;&#46;&#100;&#101;" class="link" aria-label="E-Mail-Adresse von Stephan Pfeiffer">
-                  <Icon name="mdi:alternate-email" id="icon_email"/>
-                  &#83;&#116;&#101;&#112;&#104;&#97;&#110;&#32;&#80;&#102;&#101;&#105;&#102;&#102;&#101;&#114;
-                </a>
-            </p>
-            </p>
-        </section>
     </section>
 </main>
 
@@ -176,12 +99,7 @@ const devIcons = [
     }
 
 
-    [data-icon] {
-        font-size: 5rem;
-        &#icon_email, &#icon_phone {
-            font-size: 2.5rem;
-        }
-    }
+
 
 @media screen and (max-width: 800px) {
     img {
@@ -227,20 +145,6 @@ const devIcons = [
                 transform: translateY(0.075rem);
             }
         }
-        [data-icon] {
-            text-wrap: pretty;
-            font-size: 3rem;
-        }
-    }
-
-        .devicons {
-            text-align: center;
-            margin: 2rem;
-            [data-icon] {
-                margin-inline: 1rem;
-                padding-bottom: 1rem;
-            }
-        }
 
         .link {
                 display: flex;
@@ -248,4 +152,5 @@ const devIcons = [
                 align-items: center;
                 gap: 1rem;
             }
+        }
 </style>

@@ -1,0 +1,62 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogList from "../blog/BlogList.astro";
+
+export interface Props {
+	count?: number;
+}
+
+const { count } = Astro.props;
+
+const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
+  .filter(({ data }) => data.draft !== true)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, count ?? 3);
+
+---
+
+<section class="wrapper blog">
+    <h1 class="header">blog</h1>
+    <!-- <h2>most recent entries</h2> -->
+    {posts.length === 0 &&     
+        <p class="header">blog</p>
+        <p class="paragraph">coming soon...</p>}
+
+    <BlogList posts={posts}/>
+
+    <div class="more-entries">
+        <button 
+            onclick="window.location.href='/blog'" 
+            class="more-link"
+            aria-label="View all blog entries"
+            type="button"
+        >
+            ... more entries
+        </button>
+    </div>
+</section>
+
+<style>
+    .more-entries {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .more-link {
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        background-color: var(--clr-btn-primary);
+        color: inherit;
+        text-decoration: none;
+        border-radius: 9999px;
+        font-weight: 700;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .more-link:hover {
+        background-color: var(--clr-btn-primary_hover);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -15px var(--color-text);
+    }
+</style>

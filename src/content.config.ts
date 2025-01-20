@@ -3,6 +3,7 @@ import { defineCollection, z } from 'astro:content';
 
 // 2. Import loader(s)
 import { glob } from 'astro/loaders';
+import { boolean } from 'astro:schema';
 
 // 3. Define your collection(s)
 const blogCollection = defineCollection({
@@ -14,6 +15,7 @@ const blogCollection = defineCollection({
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       image: image(),
+      draft: z.boolean().default(false),
     }),
 });
 
