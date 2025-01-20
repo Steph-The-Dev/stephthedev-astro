@@ -3,9 +3,10 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import { type CollectionEntry, getCollection, render } from "astro:content";
+import BlogList from "../../components/blog/BlogList.astro";
 
 const posts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
 
@@ -14,27 +15,38 @@ const posts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
   <main>
     <section>
       <div class="container">
-
-        <ul>
+        <!-- <ul class="blog-grid">
           {
             posts.map((post) => (
               <li>
-                <a href={`/blog/${post.id}/`}>
-                  <Image
-                    width={720}
-                    height={360}
-                    src={post.data.image}
-                    alt={post.data.title}
-                  />
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="description">
-                    {post.data.description}
-                  </p>
+                <a href={`/blog/${post.id}/`} class="blog__card">
+                  <div class="image-container">
+                    <Image
+                      width={800}
+                      height={400}
+                      src={post.data.image}
+                      alt={post.data.title}
+                      format="avif"
+                    />
+                  </div>
+                  <div class="content">
+                    <time datetime={post.data.pubDate.toISOString()} class="pub-date">
+                      {post.data.pubDate.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                    <h4>{post.data.title}</h4>
+                    <p>{post.data.description}</p>
+                    <p class="read-more">Read post &rarr;</p>
+                  </div>
                 </a>
               </li>
             ))
           }
-        </ul>
+        </ul> -->
+        <BlogList posts={posts} />
       </div>
     </section>
   </main>
@@ -43,12 +55,8 @@ const posts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
 <style>
   .container {
     margin-top: 2rem;
-    text-align: center;
-    display: grid;
-    place-items: center;
-  }
-
-  li {
-    /* max-width: 300px; */
+    max-width: var(--container-max-width, 1280px);
+    margin-inline: auto;
+    padding-inline: var(--container-padding, 1rem);
   }
 </style>
