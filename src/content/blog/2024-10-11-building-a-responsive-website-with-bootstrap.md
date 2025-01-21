@@ -4,7 +4,7 @@ title: 'Building a Responsive Website with Bootstrap'
 description: 'Learn how to create mobile-friendly, responsive websites using Bootstrap.'
 pubDate: 'Oct 11 2024'
 image: ./images/nikolai-lehmann-HBtnUG64BZE-unsplash.jpg
-draft: false
+draft: true
 ---
 
 # Building a Responsive Website with Bootstrap

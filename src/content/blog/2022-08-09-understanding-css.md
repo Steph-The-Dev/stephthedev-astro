@@ -4,7 +4,7 @@ title: 'Introduction to CSS: Basics of Styling Your Web Pages'
 description: Learn the fundamentals of CSS to enhance the look and feel of your website.
 pubDate: Aug 09 2022
 image: ./images/nikolai-lehmann-38-p-NVIWh8-unsplash.jpg
-draft: false
+draft: true
 ---
 
 # Understanding CSS
