@@ -4,6 +4,7 @@ title: 'Getting Started with React: Building Your First Component'
 description: 'Learn the basics of React and create your first component in this beginner-friendly guide.'
 pubDate: 'Nov 12 2025'
 image: ./images/yash-kumar-roy-TFE2u40Ghw8-unsplash.jpg
+draft: true
 ---
 
 # Getting Started with React

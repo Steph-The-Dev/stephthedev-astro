@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import BlogList from "../../components/blog/BlogList.astro";
@@ -11,20 +10,15 @@ const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
 ---
 
 <BaseLayout title="Blog" description="A collection of blog posts" pageTitle="Blog">
-  <main>
-    <section>
-      <div class="container">
-        <BackToHome />
+  <BackToHome />
+  <div class="blog">
         <BlogList posts={posts} />
-      </div>
-    </section>
-  </main>
+</div>
 </BaseLayout>
 
 <style>
-  .container {
-    /* width: min(100% - 2rem, 70rem); */
-    margin-inline: auto;
-    padding-inline: var(--container-padding, 1rem);
+  .blog {
+    min-width: 1280px;
+    width: 100%;
   }
 </style>

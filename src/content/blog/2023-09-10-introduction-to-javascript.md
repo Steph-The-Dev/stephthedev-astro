@@ -4,6 +4,7 @@ title: 'Introduction to JavaScript: Adding Interactivity to Your Website'
 description: 'Learn the basics of JavaScript to create dynamic and interactive web pages.'
 pubDate: 'Sep 10 2023'
 image: ./images/nikolai-lehmann-agEBTnS_Nuc-unsplash.jpg
+draft: false
 ---
 
 # Introduction to JavaScript

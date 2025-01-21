@@ -30,37 +30,14 @@ const { title, description, pubDate, image } = post.data
     </div>
 </a>
 
-<!-- <div class="hidden sm:inline-block">
-    <p class="mt-2 poppins">tags:</p>
-    <div class="flex items-center justify-between">
-        <ul class="flex flex-wrap gap-4 mt-2">
-            {
-                post.data.tags.map((tag) => {
-                    return (
-                        <li>
-                            <a href={`/blog/tags/${tag.toLowerCase()}/`}>
-                            </a>
-                        </li>
-                    );
-                })
-            }
-        </ul>
-        {
-            post.data.draft && (
-                <span class="px-4 py-1 text-sm border-2 border-black rounded-full bg-green card-shadow">
-                    Draft
-                </span>
-            )
-        }
-    </div>
-</div> -->
-
 <style>
 	.blog__card {
 		padding: 1rem;
 		background-color: var(--color-background-offset);
 		border-radius: 12px;
 		height: 100%;
+		max-height: 500px;
+		max-width: 100%;
 		display: flex;
 		flex-direction: column;
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -85,11 +62,10 @@ const { title, description, pubDate, image } = post.data
 		height: 100%;
 		object-fit: cover;
 		display: block;
-		transition: transform 0.3s ease;
 		border-radius: 6px;
 	}
 
-	.blog__card:hover .image-container img {
+	.blog__card:hover {
 		transform: scale(1.05);
 	}
 
@@ -124,15 +100,15 @@ const { title, description, pubDate, image } = post.data
 	p {
 		line-height: 1.5;
 		margin-bottom: 1rem;
-	}
-
-	p:not(.read-more) {
-		height: 4.5rem; /* 1rem font-size * 1.5 line-height * 3 lines */
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 		text-overflow: ellipsis;
+	}
+
+	p:not(.read-more) {
+		height: 4.5rem; /* 1rem font-size * 1.5 line-height * 3 lines */
 	}
 
 	.read-more {

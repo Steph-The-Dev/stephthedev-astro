@@ -10,16 +10,10 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, image } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-
-	<body>
-            <main>
+	<BaseLayout title={title} pageTitle={title} description={description}>
                 <article>
                     <div class="hero-image">
-                        <Image width={1024} height={1024} src={image} alt="my first hero image" format="avif"/>
+                        <Image width={1024} height={512} src={image} alt={title} format="avif"/>
                     </div>
                     <div class="prose">
                         <div class="title">
@@ -39,17 +33,15 @@ const { title, description, pubDate, updatedDate, image } = Astro.props;
                         <slot />
                     </div>
                 </article>
-            </main>
-	</body>
-</html>
-
+	</BaseLayout>
+	
 <style>
-	main {
+	/* main {
 		width: calc(100% - 2em);
 		max-width: 100%;
 		margin: 0;
 		font-family: var(--ff-sans);
-	}
+	} */
 	.hero-image {
 		width: 100%;
 	}

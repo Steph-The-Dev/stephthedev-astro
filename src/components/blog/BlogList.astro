@@ -28,10 +28,10 @@ const { posts } = Astro.props;
 		gap: 2rem;
 		list-style: none;
 		padding: 0;
+		grid-template-columns: repeat(auto-fit, minmax(min(50%, 350px), 1fr));
 	}
-	@media screen and (min-width: 1024px) {
-		.blog-grid {
-			grid-template-columns: repeat(3, 1fr);
-		}
+
+	li {
+		place-items: center;
 	}
 </style>

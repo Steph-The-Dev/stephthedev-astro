@@ -5,7 +5,6 @@ import BackToHome from "../components/shared/BackToHome.astro";
 
 <BaseLayout title="About me" pageTitle="Stephan Pfeiffer | Web Developer" description="This page tells you more about me.">
         <BackToHome />
-        <div class="wrapper">
             <div class="about">
 
                 <h1>short story long</h1>
@@ -28,15 +27,9 @@ import BackToHome from "../components/shared/BackToHome.astro";
                     Interests: movies, travel, computer science,computer vision, machine learning, AI, and the list goes on...
                 </p>
             </div>
-        </div>
-    </div>
 </BaseLayout>
 
 <style lang="scss">
-    .wrapper {
-        display: grid;
-        place-items: center;
-    }
 
     h1 {
         font-family: var(--ff-serif);

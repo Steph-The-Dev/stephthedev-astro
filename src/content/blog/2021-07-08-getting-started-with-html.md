@@ -4,7 +4,7 @@ title: Getting Started with HTML
 description: Learn the basics of HTML to create the structure of your first website.
 pubDate: Jul 08 2021
 image: ./images/jamie-quirke-BX3qD4veaFk-unsplash.jpg
-draft: true
+draft: false
 ---
 
 # Getting Started with HTML
