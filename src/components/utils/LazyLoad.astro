@@ -1,0 +1,49 @@
+---
+interface Props {
+    threshold?: number;
+    rootMargin?: string;
+}
+
+const { threshold = 0.1, rootMargin = '50px' } = Astro.props;
+---
+
+<div class="lazy-load" data-threshold={threshold} data-root-margin={rootMargin} data-astro-cid-j7pv25f6>
+    <slot />
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const lazyElements = document.querySelectorAll('.lazy-load');
+        
+        lazyElements.forEach(element => {
+            const options = {
+                threshold: parseFloat((element as HTMLElement).dataset.threshold || '0.1'),
+                rootMargin: (element as HTMLElement).dataset.rootMargin || '50px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            observer.observe(element);
+        });
+    });
+</script>
+
+<style>
+    .lazy-load {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .lazy-load.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>

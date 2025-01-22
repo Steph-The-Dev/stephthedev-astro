@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import portrait from '../../images/Stephan-Pfeiffer.jpg';
 ---
 
-<main>
+
     <section>
         <div class="wrapper intro upperline">
             <div class="column one">
@@ -28,15 +28,13 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
                     <p class="paragraph">From storytelling on television screens to crafting immersive digital experiences, I bring a unique perspective to web development. My 16+ years as a television editor and colorist honed my ability to deliver visually stunning content, while my studies in International Business sharpened my strategic thinking. Now, as a freelance web developer, I focus on creating websites that are both functional and aesthetically engaging, merging creativity with clean, efficient code.</p>
             </div>
             <div class="column two">
-                    <Image src={portrait} alt="A portrait of Stephan Pfeiffer." />
+                    <Image src={portrait} alt="A portrait of Stephan Pfeiffer."/>
             </div>
         </div>
     </section>
-</main>
+
 
 <style lang="scss">
-
-
     .welcome {
         display: flex;
         margin-block: 2rem;
@@ -72,7 +70,7 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
         }
     }
 
-    
+
 
 @keyframes slide {
         0% {
@@ -97,6 +95,7 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
             transform: translateY(0.125rem);
         }
     }
+
 
 
 

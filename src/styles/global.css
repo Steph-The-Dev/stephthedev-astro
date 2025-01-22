@@ -105,8 +105,9 @@ h2 {
 }
 
 main {
+  /* margin-inline: 1rem; */
+  width: min(var(--max-width), 100% - 2rem);
   margin-inline: auto;
-  max-width: var(--max-width);
 }
 
 section {
@@ -116,9 +117,6 @@ section {
   &.intro {
     display: grid;
     grid-template-columns: 1fr;
-  }
-  margin-inline: 1rem;
-  &.tools {
   }
   &.projects,
   &.blog {
@@ -136,18 +134,16 @@ section {
     /* margin-bottom: 2rem; */
     &.intro {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 3fr 1fr;
       grid-template-rows: auto;
       gap: 2rem;
       .column {
         padding-top: 2rem;
-        &.one {
-        }
 
         &.two {
           height: 0;
           min-height: 100%;
-          overflow: hidden;
+          overflow: auto;
 
           img {
             height: 100%;
