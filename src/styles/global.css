@@ -129,9 +129,9 @@ section {
     }
   }
 }
+
 @media screen and (width > 800px) {
   .wrapper {
-    /* margin-bottom: 2rem; */
     &.intro {
       display: grid;
       grid-template-columns: 3fr 1fr;

@@ -1,14 +1,24 @@
 ---
 id: 2025-01-22-my-first-blog-post
-title: 'My First Blog Post: Getting Started with React'
-description: 'Learn the basics of React and create your first component in this beginner-friendly guide.'
+title: 'My First Blog Post'
+description: 'My journey as a developer'
 pubDate: 'Jan 22 2025'
-image: ./images/yash-kumar-roy-TFE2u40Ghw8-unsplash.jpg
+image: ./images/atacama-road.png
 draft: true
 ---
 
 # My First Blog Post
 
+Share your journey, challenges overcome, and what you've learned
+
 ## Introduction
 
+My journey as a self-taught developer began early 2022. At that point I had been a self-taught television editor and colorist for the last 14 years. Then I was deciding against my formal studies of Marketing Management, English and Spanish and that I would work at some marketing agency or in a marketing department of a big corporation. The creative arts always intrigued me. I remember the first time when I was earning money with being a videgrapher. Out there with a camera and then editing all the footage myself. Before I never imagined I could live off of that. A long exhausting and exciting journey lied ahead of me.
+
 ## Conclusion
+
+---
+
+https://css-tip.com/equal-height-column/
+
+## One column to control the height of another
