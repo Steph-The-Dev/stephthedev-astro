@@ -40,6 +40,7 @@ const { title, description, pubDate, image } = post.data
 		max-width: 100%;
 		display: flex;
 		flex-direction: column;
+		background-color: rgba(218, 171, 18, 0.232);
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 		transition: all 0.2s ease-in-out;
 	}
@@ -50,12 +51,14 @@ const { title, description, pubDate, image } = post.data
 	}
 
 	.image-container {
-		aspect-ratio: 16/9;
-		overflow: hidden;
-		border-radius: 8px;
-		margin: -0.5rem -0.5rem 0;
-		padding: 0.5rem;
-	}
+        aspect-ratio: 16/9;
+        height: 50%; /* Adjust this value to control the image height */
+        overflow: hidden;
+        border-radius: 8px;
+        margin: -0.5rem -0.5rem 0;
+        padding: 0.5rem;
+		flex-grow: 1;
+    }
 
 	.image-container img {
 		width: 100%;
@@ -70,10 +73,14 @@ const { title, description, pubDate, image } = post.data
 	}
 
 	.content {
-		flex-grow: 1;
+		/* flex-grow: 1; */
+		height: 50%;
 		display: flex;
 		flex-direction: column;
 		padding: 1.25rem 0.5rem 0.5rem;
+		        /* Add these to distribute the remaining space visually appealingly */
+				gap: 1rem;
+        justify-content: space-between;
 	}
 
 	.pub-date {
@@ -99,7 +106,7 @@ const { title, description, pubDate, image } = post.data
 
 	p {
 		line-height: 1.5;
-		margin-bottom: 1rem;
+		/* margin-bottom: 1rem; */
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
