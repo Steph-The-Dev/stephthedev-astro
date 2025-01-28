@@ -1,8 +1,10 @@
 ---
+import BackToHome from "../components/shared/BackToHome.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Datenschutz" pageTitle="Stephan Pfeiffer | Web Developer" description="Datenschutzerklärung">
+  <BackToHome />
   <div class="wrapper">
     <article class="privacy-policy" aria-labelledby="privacy-policy-title">
       <h1 id="privacy-policy-title" class="title">Datenschutzerkl&auml;rung</h1>
@@ -99,11 +101,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   font-family: var(--ff-sans);
   line-height: 1.6;
   color: #333;
-  padding: 2rem;
+  margin-bottom: 2rem;
 
   .title {
     font-size: 2em;
-    margin-bottom: 1rem;
+    font-weight: bold;
   }
 
   .subtitle {

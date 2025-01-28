@@ -162,8 +162,11 @@ section {
   background-color: hsla(0, 0%, 35%, 0.5);
   border-radius: 12px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  max-height: 500px;
+  min-width: 350px;
+  max-width: calc((var(--max-width) - 2rem) / 3);
+  /* display: flex;
+  flex-direction: column; */
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -178,7 +181,8 @@ section {
 }
 
 .blog__card .image-container {
-  aspect-ratio: 16/9;
+  /* aspect-ratio: 16/9; */
+  height: 50%;
   overflow: hidden;
   border-radius: 8px;
   margin: -0.5rem -0.5rem 0;
@@ -265,7 +269,7 @@ section {
 
 @media (min-width: 1024px) {
   .blog-grid {
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
   }
 }
 

@@ -1,16 +1,19 @@
 ---
+import BackToHome from "../components/shared/BackToHome.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
+<!-- BaseLayout component: Provides the main layout structure for the page. -->
 <BaseLayout title="Imprint" pageTitle="Stephan Pfeiffer | Web Developer" description="Imprint">
-    <div class="wrapper">
+  <BackToHome />
+  <div class="wrapper">
       <article class="impressum" aria-labelledby="impressum-title">
         <h1 id="impressum-title" class="title">Impressum</h1>
         
         <section class="section">
           <p class="text">Angaben gem&auml;&szlig; &sect; 5 DDG</p>
         </section>
-  
+        
         <section class="section" aria-labelledby="contact-title">
           <h2 id="contact-title" class="subtitle">Kontaktinformationen</h2>
           <p class="text">
@@ -26,7 +29,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </a>
           </p>
         </section>
-  
+        
         <section class="section" aria-labelledby="business-info-title">
           <h2 id="business-info-title" class="subtitle">Gesch&auml;ftliche Informationen</h2>
           <p class="text">
@@ -40,31 +43,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             50735 K&ouml;ln
           </p>
         </section>
-  
+        
         <section class="section" aria-labelledby="disclaimer-title">
           <h2 id="disclaimer-title" class="subtitle">Haftungsausschluss</h2>
-  
+          
           <div class="subsection" aria-labelledby="content-liability-title">
             <h3 id="content-liability-title" class="subsubtitle">Haftung f&uuml;r Inhalte</h3>
             <p class="text">
               Die Inhalte unserer Seiten wurden mit gr&ouml;&szlig;ter Sorgfalt erstellt. F&uuml;r die Richtigkeit, Vollst&auml;ndigkeit und Aktualit&auml;t der Inhalte k&ouml;nnen wir jedoch keine Gew&auml;hr &uuml;bernehmen. Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 DDG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
             </p>
           </div>
-  
+          
           <div class="subsection" aria-labelledby="links-liability-title">
             <h3 id="links-liability-title" class="subsubtitle">Haftung f&uuml;r Links</h3>
             <p class="text">
               Unser Angebot enth&auml;lt Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb k&ouml;nnen wir f&uuml;r diese fremden Inhalte auch keine Gew&auml;hr &uuml;bernehmen.
             </p>
           </div>
-  
+          
           <div class="subsection" aria-labelledby="copyright-title">
             <h3 id="copyright-title" class="subsubtitle">Urheberrecht</h3>
             <p class="text">
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Downloads und Kopien dieser Seite sind nur f&uuml;r den privaten, nicht kommerziellen Gebrauch gestattet.
             </p>
           </div>
-  
+          
           <div class="subsection" aria-labelledby="privacy-title">
             <h3 id="privacy-title" class="subsubtitle">Datenschutz</h3>
             <p class="text">
@@ -72,7 +75,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </p>
           </div>
         </section>
-  
+        
         <footer class="footer">
           <p class="source">
             Website Impressum erstellt durch 
@@ -84,10 +87,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
     </div>
   </BaseLayout>
-  
-
 
 <style lang="scss">
+// Styles for the impressum page
 .wrapper {
   display: grid;
   place-items: center;
@@ -98,11 +100,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   font-family: var(--ff-sans);
   line-height: 1.6;
   color: #333;
-  padding: 20px;
 
   .title {
     font-size: 2em;
-    margin-bottom: 1rem;
+    font-weight: bold;
   }
 
   .subtitle {

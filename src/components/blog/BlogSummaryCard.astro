@@ -30,16 +30,16 @@ const { title, description, pubDate, image } = post.data
     </div>
 </a>
 
-<style>
+<!-- <style>
 	.blog__card {
 		padding: 1rem;
 		background-color: var(--color-background-offset);
 		border-radius: 12px;
 		height: 100%;
 		max-height: 500px;
-		max-width: 100%;
-		display: flex;
-		flex-direction: column;
+		/* max-width: 350px; */
+		display: grid;
+		grid-template-rows: 1fr 1fr;
 		background-color: rgba(218, 171, 18, 0.232);
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 		transition: all 0.2s ease-in-out;
@@ -51,13 +51,12 @@ const { title, description, pubDate, image } = post.data
 	}
 
 	.image-container {
-        aspect-ratio: 16/9;
-        height: 50%; /* Adjust this value to control the image height */
+        /* flex-grow: 1; */
+        /* aspect-ratio: 16/9; */
         overflow: hidden;
         border-radius: 8px;
         margin: -0.5rem -0.5rem 0;
         padding: 0.5rem;
-		flex-grow: 1;
     }
 
 	.image-container img {
@@ -73,13 +72,12 @@ const { title, description, pubDate, image } = post.data
 	}
 
 	.content {
-		/* flex-grow: 1; */
-		height: 50%;
+        /* flex-grow: 1; */
 		display: flex;
 		flex-direction: column;
 		padding: 1.25rem 0.5rem 0.5rem;
 		        /* Add these to distribute the remaining space visually appealingly */
-				gap: 1rem;
+		gap: 1rem;
         justify-content: space-between;
 	}
 
@@ -131,4 +129,4 @@ const { title, description, pubDate, image } = post.data
 	.blog__card:hover .read-more {
 		gap: 0.75rem;
 	}
-</style>
+</style> -->
