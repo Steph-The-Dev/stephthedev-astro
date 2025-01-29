@@ -4,7 +4,7 @@ import MobileNavigationCSS from "./MobileNavigationCSS.astro";
 
 const navigationItems = [
 	{ name: "Projects", url: "/projects", isShown: false },
-	{ name: "Blog", url: "/blog", isShown: false },
+	{ name: "Blog", url: "/blog", isShown: true },
 	{ name: "About Me", url: "/about", isShown: true },
 	{ name: "Contact", url: "/#contact", isShown: true },
 ];
@@ -69,6 +69,7 @@ const socialIcons = [
         font-size: 1rem;
         &-name {
           font-size: var(--fs-450);
+          font-weight: 500;
         }
       }
     
@@ -98,7 +99,26 @@ const socialIcons = [
       .nav-links {
         display: flex;
         gap: 1.5rem;
-      }
+        a {
+          position: relative;
+          &:hover {
+            font-style: italic;
+            &::after {
+              width: 100%;
+            }
+          }
+          &::after {
+            background-color: var(--clr-accent-400);
+            position: absolute;
+            content: "";
+            display: block;
+            bottom: -5px;
+            height: 3px;
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+          }
+        }
+        }
   
       .mobile-nav {
           display: none;

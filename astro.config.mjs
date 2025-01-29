@@ -10,6 +10,7 @@ export default defineConfig({
         mdi: ['*'], // (Default) Loads entire Material Design Icon set
         devicon: ['*'], // Loads only Material Design Icon's "account" SVG
         'simple-icons': ['*'],
+        logos: ['*'],
       },
     }),
   ],
