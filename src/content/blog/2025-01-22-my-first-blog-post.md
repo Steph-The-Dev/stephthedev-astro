@@ -3,7 +3,7 @@ id: 2025-01-22-my-first-blog-post
 title: 'My First Blog Post'
 description: "My journey as a developer. Share your journey, challenges overcome, and what you've learned"
 pubDate: 'Jan 22 2025'
-image: ./images/atacama-road-16-9.png
+image: ./images/balloons_confetti_2.png
 draft: false
 ---
 
