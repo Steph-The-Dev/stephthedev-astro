@@ -25,7 +25,7 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
                         <a href="/about"><p>&dzigrarr; get the short story long here</p></a>
                     </p>
                 </div>
-                    <p class="paragraph">From crafting engaging stories on television screens to creating immersive digital experiences, I bring a unique perspective to web development. With over 16 years of experience as a television editor and colorist, I&apos;ve honed my ability to produce visually stunning content, while my studies in International Business have sharpened my strategic thinking. Now, as a freelance web developer, I focus on building websites that are not only functional but also aesthetically appealing, blending creativity with clean, efficient code.</p>
+                <p class="paragraph">From crafting engaging stories on television screens to creating immersive digital experiences, I bring a unique perspective to web development. With over 16 years of experience as a television editor and colorist, I&apos;ve honed my ability to produce visually stunning content, while my studies in International Business have sharpened my strategic thinking. Now, as a freelance web developer, I focus on building websites that are not only functional but also aesthetically appealing, blending creativity with clean, efficient code.</p>
             </div>
             <div class="column two">
                     <Image src={portrait} alt="A portrait of Stephan Pfeiffer."/>
@@ -54,7 +54,12 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
             }
         }
     }
-
+    
+    .paragraph {
+        text-align: justify;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+    }
     .tldr {
         margin-bottom: 2rem;
         &_header {
