@@ -182,7 +182,7 @@ section {
   .wrapper {
     &.intro {
       display: grid;
-      grid-template-columns: 3fr minmax(400px, 1fr);
+      grid-template-columns: 2fr minmax(350px, 1fr);
       grid-template-rows: auto;
       gap: 2rem;
       .column {
@@ -252,6 +252,8 @@ section {
   display: flex;
   flex-direction: column;
   padding: 1.25rem 0.5rem 0.5rem;
+  height: 50%;
+  text-align: center;
 }
 
 .blog__card .pub-date {
