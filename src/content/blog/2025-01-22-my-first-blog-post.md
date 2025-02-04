@@ -17,9 +17,9 @@ This blog post marks the beginning of my journey as a self-taught developer. But
 
 The purpose of this site is to present myself as web developer and share my experience with you. As I am coming from being a self-taught freelance television editor and colorist, the natural progression now for me is to make the transition from one freelance career to another. I think this could be a viable way going forward but I also am equally open to other opportunities being employed.
 
-## Coming up
+## Coming up...
 
-The site is still a work in progress. But so far I am quite happy with how far I came with it.
+The site is still a work in progress. But so far I am quite happy with how far I came with it. I'm
 
 ## Conclusion
 
