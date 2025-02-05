@@ -1,7 +1,7 @@
 ---
-id: 2025-11-12-getting-started-with-react
-title: 'Getting Started with React: Building Your First Component'
-description: 'Learn the basics of React and create your first component in this beginner-friendly guide.'
+id: 2025-XX-XX-my-journey-as-a-self-taught-developer
+title: 'My journey as a self-taught developer'
+description: 'XXX'
 pubDate: 'Nov 12 2025'
 image: ./images/atacama-road-16-9.png
 draft: true

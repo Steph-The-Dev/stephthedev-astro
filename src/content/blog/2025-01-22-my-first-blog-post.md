@@ -2,12 +2,10 @@
 id: 2025-01-22-my-first-blog-post
 title: 'My First Blog Post'
 description: "My journey as a developer. Share your journey, challenges overcome, and what you've learned"
-pubDate: 'Jan 22 2025'
+pubDate: 'Feb 05 2025'
 image: ./images/balloons_confetti_2.png
 draft: false
 ---
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 ## I finally wrote my first blog post
 
@@ -22,9 +20,3 @@ The purpose of this site is to present myself as web developer and share my expe
 The site is still a work in progress. But so far I am quite happy with how far I came with it. I'm
 
 ## Conclusion
-
----
-
-<https://css-tip.com/equal-height-column/>
-
-## One column to control the height of another

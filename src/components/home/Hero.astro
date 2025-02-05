@@ -28,13 +28,25 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
                 <p class="paragraph">From crafting engaging stories on television screens to creating immersive digital experiences, I bring a unique perspective to web development. With over 16 years of experience as a television editor and colorist, I&apos;ve honed my ability to produce visually stunning content, while my studies in International Business have sharpened my strategic thinking. Now, as a freelance web developer, I focus on building websites that are not only functional but also aesthetically appealing, blending creativity with clean, efficient code.</p>
             </div>
             <div class="column two">
-                    <Image src={portrait} alt="A portrait of Stephan Pfeiffer."/>
+                <div class="image-wrapper">
+
+                    <Image src={portrait} format="webp" alt="A portrait of Stephan Pfeiffer."/>
+                </div>
             </div>
         </div>
     </section>
 
 
 <style lang="scss">
+
+    .image-wrapper {
+        height: 100%;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 30px -8px;
+        border-radius: 20px;
+
+
+    }
     .welcome {
         display: flex;
         margin-block: 2rem;
@@ -55,11 +67,7 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
         }
     }
     
-    .paragraph {
-        text-align: justify;
-        hyphens: auto;
-        -webkit-hyphens: auto;
-    }
+
     .tldr {
         margin-bottom: 2rem;
         &_header {
@@ -103,15 +111,13 @@ import portrait from '../../images/Stephan-Pfeiffer.jpg';
 
 
 
-
-
 @media screen and (max-width: 800px) {
     img {
-        margin-block: 1rem;
+        // margin-block: 1rem;
         max-height: 600px;
         object-fit: cover;
-        border-radius: 0px;
-        border-radius: 20px;
+        // border-radius: 0px;
+        // border-radius: 20px;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     }
     .welcome {
