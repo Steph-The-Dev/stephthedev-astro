@@ -4,6 +4,8 @@ import icon from 'astro-icon';
 
 import robotsTxt from 'astro-robots-txt';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [icon({
@@ -13,7 +15,7 @@ export default defineConfig({
       'simple-icons': ['*'],
       logos: ['*'],
     },
-  }), robotsTxt()],
+  }), robotsTxt(), sitemap()],
   vite: {
     css: {
       devSourcemap: false, // Disable source maps in development
