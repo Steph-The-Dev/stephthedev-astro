@@ -3,7 +3,6 @@ import { defineCollection, z } from 'astro:content';
 
 // 2. Import loader(s)
 import { glob } from 'astro/loaders';
-import { boolean } from 'astro:schema';
 
 // 3. Define your collection(s)
 const blogCollection = defineCollection({
