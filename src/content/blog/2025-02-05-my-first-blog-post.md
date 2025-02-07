@@ -1,5 +1,5 @@
 ---
-id: 2025-01-22-my-first-blog-post
+id: 2025-02-05-my-first-blog-post
 title: 'My First Blog Post'
 description: 'This blog post marks the start of my journey as a developer...'
 pubDate: 'Feb 05 2025'
