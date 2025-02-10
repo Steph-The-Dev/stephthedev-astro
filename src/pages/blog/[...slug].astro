@@ -3,7 +3,6 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import BlogPost from "../../layouts/BlogPost.astro";
 import { render } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
