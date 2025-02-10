@@ -11,7 +11,7 @@ export interface Props {
 	title: string;
 	description: string;
 	classList?: string;
-	pageTitle?: string;
+	pageTitle: string;
 	socialImg?: URL;
 }
 
@@ -22,8 +22,8 @@ const { title, description, classList, pageTitle, socialImg } = Astro.props;
 <html lang="en">
 	<body>
 		<div class="head">
-			<BaseHead title={title} description={description} />
-			<BaseNavigation pageTitle={pageTitle} />
+			<BaseHead title={title} pageTitle={pageTitle} description={description} />
+			<BaseNavigation />
 			<MobileSocials/>
 		</div>
 		<main>
