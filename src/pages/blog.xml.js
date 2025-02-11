@@ -5,7 +5,7 @@ export async function GET(context) {
   const blog = await getCollection('blog');
   return rss({
     title: 'Steph-the-Dev Blog',
-    description: 'A humble Astronaut’s guide to the stars',
+    description: 'A blog from a self-taught web developer',
     site: context.site,
     items: blog
       .filter(({ data }) => data.draft !== true)
