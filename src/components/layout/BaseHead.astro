@@ -5,6 +5,11 @@ export interface Props {
 	description: string;
 	socialImg?: URL;
 }
+
+export interface Window {
+          dataLayer: any[];
+        }
+
 const { title, description, pageTitle } = Astro.props;
 
 import LocalFonts from "./LocalFonts.astro";
@@ -28,6 +33,18 @@ import { ClientRouter } from 'astro:transitions';
     <link rel="icon" type="image/png" href="favicon2.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <LocalFonts />
+    <script>
+
+      
+        window.dataLayer = window.dataLayer || [];
+      
+        function gtag(...args: any[]) {
+          window.dataLayer.push(arguments);
+        }
+      
+        gtag('js', new Date());
+        gtag('config', 'G-KYSS0GE29C');
+      </script>
 </head>
 
 <ClientRouter />
