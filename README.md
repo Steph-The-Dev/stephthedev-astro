@@ -2,7 +2,7 @@
 
 ## Description
 
-This is my portfolio site showcasing my web development journey.
+This is my [portfolio site](https://stephthedev.de/) showcasing my web development journey.
 
 ![Image](/public/StephTheDev-Screenshot.png)
 
