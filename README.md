@@ -25,8 +25,8 @@ I've created this website to share my web development journey with you. I hope w
 
 You can subscribe to my [blog rss feed](https://stephthedev.de/blog.xml).
 
-### Technical details
+## Technical details
 
-#### Quick start
+### Quick start
 
 You will find all necessary information to start your own website with astro [here](https://docs.astro.build/en/getting-started/)
