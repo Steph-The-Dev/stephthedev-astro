@@ -4,7 +4,7 @@
 
 This is my portfolio site showcasing my web development journey.
 
-[Image](/public/StephTheDev-Screenshot.png)
+![Image](/public/StephTheDev-Screenshot.png)
 
 I've built this site using:
 
