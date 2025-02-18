@@ -14,5 +14,5 @@ I've built this site using:
 
 ## My goal
 
-Soon after I've started my web development journey I discovered [Astro](https://astro.build) and I knew I wanted to make my portfolio with Astro. I knew it was a fast framework and especially built for content driven sites with its [content collections](https://docs.astro.build/en/guides/content-collections/).
+Soon after I've started my web development journey I discovered [Astro](https://astro.build) and I knew I wanted to make my portfolio with Astro. I knew it was a fast framework and especially built for content driven sites with its [content collections](https://docs.astro.build/en/guides/content-collections/). I've built my blog with content collections and it's working great. IIt uses md files and auto generates the blog entries on demand.
 I took inspiration from [Chris Pennington](https://chrispennington.blog/) with [his fantasting content on youtube](https://www.youtube.com/@codinginpublic) covering Astro.
