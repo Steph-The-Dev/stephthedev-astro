@@ -1,11 +1,17 @@
 ---
+import{ Image } from 'astro:assets';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BackToHome from "../components/shared/BackToHome.astro";
+
+import kidsRoom from "../images/80s_kids_room.jpg" 
 ---
 
 <BaseLayout title="About me" pageTitle="Stephan Pfeiffer | Web Developer" description="This page tells you more about me.">
         <BackToHome />
             <div class="about">
+                <div class="hero-image">
+                    <Image width={1024} height={512} src={kidsRoom}alt="Photograph from the 1980s with a kid sitting around computers" format="avif"/>
+                </div>
 
                 <h1>short story long</h1>
                 <h2>I Was Born a Month Before Pac-Man Was Released</h2>
