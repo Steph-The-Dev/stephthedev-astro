@@ -16,12 +16,12 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@iconify-json/logos": "^1.2.4",
-    "astro": "^5.4.0",
+    "astro": "^5.4.1",
     "astro-font": "^1.0.0",
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
     "sass": "^1.85.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
