@@ -2,28 +2,33 @@
 import { Icon } from 'astro-icon/components';
 import type { Social } from '../../types/Social';
 
-const socials = [
+const socials: Social[] = [
 	{
     name: "Github",
     url: "https://github.com/Steph-The-Dev/",
     icon: "mdi:github",
+    platform: "GitHub"
   },
 	{
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/stephanpfeiffer/",
-	icon: "mdi:linkedin",
+	  icon: "mdi:linkedin",
+    platform: "LinkedIn"
   },
 	{
     name: "Bluesky",
     url: "https://stephthedev.bsky.social/",
-	icon: "simple-icons:bluesky",
+	  icon: "simple-icons:bluesky",
+    platform: "Bluesky"
   },
   {
     name: "RSS Feed",
     url: "https://stephthedev.de/blog.xml",
 	  icon: "mdi:rss-feed",
+    platform: "RSS"
   },
-] as  Social[];
+];
+
 ---
 
 <section class="socials">
