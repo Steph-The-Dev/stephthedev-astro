@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import BlogList from "../../components/blog/BlogList.astro";
-import BackToHome from "../../components/shared/BackToHome.astro";
 
 const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
   .filter(({ data }) => data.draft !== true)
@@ -10,7 +9,6 @@ const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
 ---
 
 <BaseLayout title="Blog" description="A collection of blog posts" pageTitle="Blog">
-  <!-- <BackToHome /> -->
   <div class="blog">
         <BlogList posts={posts} />
 </div>
