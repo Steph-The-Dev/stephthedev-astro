@@ -10,7 +10,7 @@ const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
 ---
 
 <BaseLayout title="Blog" description="A collection of blog posts" pageTitle="Blog">
-  <BackToHome />
+  <!-- <BackToHome /> -->
   <div class="blog">
         <BlogList posts={posts} />
 </div>
@@ -20,5 +20,6 @@ const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
   .blog {
     max-width: 1280px;
     width: 100%;
+    margin: 3rem 0 6rem;
   }
 </style>
