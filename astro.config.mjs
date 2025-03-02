@@ -16,6 +16,7 @@ export default defineConfig({
         devicon: ['*'], // Loads only Material Design Icon's "account" SVG
         'simple-icons': ['*'],
         logos: ['*'],
+        'devicon-plain': ['*'],
       },
     }),
     robotsTxt(),

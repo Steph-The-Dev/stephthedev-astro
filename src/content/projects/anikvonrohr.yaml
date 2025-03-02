@@ -1,0 +1,12 @@
+title: Anik von Rohr - Systemische Beraterin
+description: Customer Website
+image: ./thumbnails/AnikVonRohr-Screenshot.png
+pubDate: 2025-02-25
+url: "https://www.anikvonrohr.de"
+githubUrl: "https://github.com/Steph-The-Dev/anik-astro2"
+icons:
+  - devicon:astro
+  - devicon:tailwindcss
+  - devicon:typescript
+  - devicon:alpinejs
+draft: false

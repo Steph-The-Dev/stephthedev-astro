@@ -1,6 +1,6 @@
 ---
 import Hero from "../components/home/Hero.astro";
-import Projects from "../components/home/Projects.astro";
+import RecentProjects from "../components/home/RecentProjects.astro";
 import Tools from "../components/home/Tools.astro";
 import RecentBlogPosts from "../components/home/RecentBlogPosts.astro";
 
@@ -16,7 +16,7 @@ import Contact from "../components/home/Contact.astro";
     <Tools aria-label="Developer Tools"/>
     
     <!-- Projects component: Lists the projects completed by the developer. -->
-    <Projects aria-label="Projects Overview"/>
+    <RecentProjects count={3} aria-label="Projects Overview"/>
     
     <!-- RecentBlogPosts component: Displays recent blog posts, limited to 3. -->
     <RecentBlogPosts count={3} aria-label="Recent Blog Posts"/>
