@@ -33,14 +33,14 @@ const bgColorAction = getRandomLightColor();
         
         <div class="actions">
             {url && (
-                <a href={url} target="_blank" class="action-link primary" style={`--action-link-bg-color: ${bgColorAction};`}>
-                    <span>View Project</span>
+                <a href={url} target="_blank" aria-label={`Go to ${title} website`} class="action-link primary" style={`--action-link-bg-color: ${bgColorAction};`}>
+                    <span>Go to website</span>
                     <span class="arrow">&rarr;</span>
                 </a>
             )}
             {githubUrl && (
-                <a href={githubUrl} target="_blank" class="action-link secondary">
-                    <span>GitHub</span>
+                <a href={githubUrl} target="_blank" class="action-link secondary" aria-label={`View project ${title} on GitHub`}>
+                    <span>View on GitHub</span>
                     <span class="arrow">&rarr;</span>
                 </a>
             )}
