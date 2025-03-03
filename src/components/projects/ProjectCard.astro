@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import { getRandomLightColor } from "../../lib/utils";
 import {Icon} from "astro-icon/components";
 
 export interface Props {
@@ -11,13 +10,9 @@ export interface Props {
 const { project } = Astro.props;
 
 const { title, description, url, githubUrl, image, icons = [] } = project.data;
-// console.log(icons);
-
-const bgColor = getRandomLightColor();
-const bgColorAction = getRandomLightColor();
 ---
 
-<div class="project-card" style={`--card-bg-color: ${bgColor};`}>
+<div class="project-card" >
     <div class="image-container">
         <Image src={image} alt={title} width={800} height={400} format="avif"/>
     </div>
@@ -33,7 +28,7 @@ const bgColorAction = getRandomLightColor();
         
         <div class="actions">
             {url && (
-                <a href={url} target="_blank" aria-label={`Go to ${title} website`} class="action-link primary" style={`--action-link-bg-color: ${bgColorAction};`}>
+                <a href={url} target="_blank" aria-label={`Go to ${title} website`} class="action-link primary">
                     <span>Go to website</span>
                     <span class="arrow">&rarr;</span>
                 </a>
@@ -136,3 +131,18 @@ const bgColorAction = getRandomLightColor();
     margin-top: auto;
 }
 </style>
+
+<script>
+    import { getRandomLightColor } from "../../lib/utils";
+    
+    
+    document.addEventListener("astro:page-load", () => {
+        const projectCards = document.querySelectorAll("div.project-card");
+    if (projectCards) {
+        projectCards.forEach((card) => {
+            const bgColor = getRandomLightColor();
+            (card as HTMLElement).style.backgroundColor = bgColor;
+        })
+    }
+})
+</script>

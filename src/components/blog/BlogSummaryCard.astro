@@ -1,22 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import { getRandomLightColor } from "../../lib/utils";
-
 
 export interface Props {
 	post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
-// console.log(post);
 
 const { title, description, pubDate, image } = post.data;
-
-const bgColor = getRandomLightColor();
 ---
 
-<a href={`/blog/${post.id}/`} class="blog__card" style={`background-color: ${bgColor};`}>
+<a href={`/blog/${post.id}/`} class="blog__card">
     <div class="image-container">
         <Image src={image} alt={title} width={800} height={400} format="avif"/>
     </div>
@@ -36,3 +31,17 @@ const bgColor = getRandomLightColor();
         </p>
     </div>
 </a>
+
+<script>
+    import { getRandomLightColor } from "../../lib/utils";
+    
+    document.addEventListener("astro:page-load", () => {
+        const blogSummaryCards = document.querySelectorAll("a.blog__card");
+    if (blogSummaryCards) {
+        blogSummaryCards.forEach((card) => {
+            const bgColor = getRandomLightColor();
+            (card as HTMLElement).style.backgroundColor = bgColor;
+        })
+    }
+})
+</script>

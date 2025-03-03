@@ -222,7 +222,7 @@ section {
 /* Card Styles */
 .blog__card {
   padding: 1rem;
-  background-color: var(--clr-accent-200);
+  /* background-color: var(--clr-accent-200); */
   border-radius: 12px;
   height: 100%;
   max-height: 500px;
