@@ -27,7 +27,6 @@ const { projects } = Astro.props;
 	width: 100%;
 	max-width: var(--max-width, 1200px);
 	margin: 0 auto;
-	padding: 0 1rem;
 }
 
 .project-grid {
@@ -35,24 +34,11 @@ const { projects } = Astro.props;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     list-style: none;
-    padding: 0;
 }
 
 .project-item {
     display: flex;
     justify-content: center;
-}
-
-@media (max-width: 992px) {
-	.project-grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-@media (max-width: 768px) {
-	.project-grid {
-		grid-template-columns: 1fr;
-	}
 }
 
 @supports not (grid-template-rows: subgrid) {
