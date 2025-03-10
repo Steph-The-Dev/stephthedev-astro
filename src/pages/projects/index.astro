@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import ProjectList from "../../components/projects/ProjectList.astro";
+
+const projects: CollectionEntry<"projects">[] = (await getCollection("projects"))
+  .filter(({ data }) => data.draft !== true)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+---
+
+<BaseLayout title="Projects" description="A collection my projects" pageTitle="Projects">
+  <div class="projects">
+        <ProjectList projects={projects} />
+    </div>
+</BaseLayout>
+
+<style>
+  .projects {
+    max-width: 1280px;
+    width: 100%;
+    margin: 3rem 0 6rem;
+  }
+</style>

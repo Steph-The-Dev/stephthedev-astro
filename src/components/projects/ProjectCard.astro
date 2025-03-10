@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import {Icon} from "astro-icon/components";
+
+export interface Props {
+	project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const { title, description, url, githubUrl, image, icons = [] } = project.data;
+---
+
+<div class="project-card" >
+    <div class="image-container">
+        <Image src={image} alt={title} width={800} height={400} format="avif"/>
+    </div>
+    <div class="content">
+        <h2 class="title">{title}</h2>
+        <p class="description">{description}</p>
+        
+        <div class="tech-stack">
+            {icons && icons.map((icon) => (
+                <Icon name={icon} class="tech-icon" />
+            ))}
+        </div>
+        
+        <div class="actions">
+            {url && (
+                <a href={url} target="_blank" aria-label={`Go to ${title} website`} class="action-link primary">
+                    <span>Go to website</span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            )}
+            {githubUrl && (
+                <a href={githubUrl} target="_blank" class="action-link secondary" aria-label={`View project ${title} on GitHub`}>
+                    <span>View on GitHub</span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            )}
+        </div>
+    </div>
+</div>
+
+<style>
+.project-card {
+    display: grid;
+    grid-template-rows: 200px 1fr;
+    max-height: 500px;
+    width: calc((var(--max-width) - 2rem) / 3);
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .image-container img {
+    transform: scale(1.05);
+}
+
+.content {
+    padding: 1.25rem;
+    display: grid;
+    /* grid-template-columns: subgrid; */
+    grid-template-rows: 1fr auto auto auto;
+    gap: 0.75rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--clr-text-900);
+    text-wrap: balance;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description {
+    color: var(--clr-text-700);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+    justify-content: center;
+}
+
+.tech-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--clr-text-700);
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+</style>
+
+<script>
+    import { getRandomLightColor } from "../../lib/utils";
+    
+    
+    document.addEventListener("astro:page-load", () => {
+        const projectCards = document.querySelectorAll("div.project-card");
+    if (projectCards) {
+        projectCards.forEach((card) => {
+            const bgColor = getRandomLightColor();
+            (card as HTMLElement).style.backgroundColor = bgColor;
+        })
+    }
+})
+</script>

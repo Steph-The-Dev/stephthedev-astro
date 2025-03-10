@@ -1,0 +1,10 @@
+title: StephTheDev
+description: Web Development Portfolio
+image: ./thumbnails/StephTheDev-Screenshot.png
+pubDate: 2025-02-05
+githubUrl: "https://github.com/Steph-The-Dev/stephthedev-astro"
+icons:
+  - devicon:astro
+  - devicon:sass
+  - devicon:typescript
+draft: false

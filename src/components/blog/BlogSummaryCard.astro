@@ -7,9 +7,8 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-// console.log(post);
 
-const { title, description, pubDate, image } = post.data
+const { title, description, pubDate, image } = post.data;
 ---
 
 <a href={`/blog/${post.id}/`} class="blog__card">
@@ -26,6 +25,23 @@ const { title, description, pubDate, image } = post.data
         </time>
         <h2>{title}</h2>
         <p>{description}</p>
-        <p class="read-more">Read post &rarr;</p>
+        <p class="action-link primary">
+            <span>Read post</span>
+            <span class="arrow">&rarr;</span>
+        </p>
     </div>
 </a>
+
+<script>
+    import { getRandomLightColor } from "../../lib/utils";
+    
+    document.addEventListener("astro:page-load", () => {
+        const blogSummaryCards = document.querySelectorAll("a.blog__card");
+    if (blogSummaryCards) {
+        blogSummaryCards.forEach((card) => {
+            const bgColor = getRandomLightColor();
+            (card as HTMLElement).style.backgroundColor = bgColor;
+        })
+    }
+})
+</script>

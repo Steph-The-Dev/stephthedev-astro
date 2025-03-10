@@ -1,0 +1,45 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import ProjectList from "../projects/ProjectList.astro";
+
+export interface Props {
+	count?: number;
+}
+
+const { count } = Astro.props;
+
+const projects: CollectionEntry<"projects">[] = (await getCollection("projects"))
+    .filter(({ data }) => data.draft !== true)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, count ?? 3);
+
+// console.log(projects);
+---
+
+<section class="wrapper projects">
+    <a href="/projects/"><h1 class="header">projects</h1></a>
+    {projects.length === 0 &&     
+        <p class="paragraph">coming soon...</p>
+    }
+
+    {projects.length !== 0 &&
+        <div class="centered">
+            <ProjectList projects={projects} />
+        </div>
+        }
+</section>
+
+<style lang="scss">
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        // padding: 1rem 2rem;
+        &.projects {
+            margin-top: 2rem;
+            * {
+                text-align: center;
+            }
+        }
+    }
+</style>
