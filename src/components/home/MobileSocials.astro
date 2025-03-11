@@ -41,30 +41,31 @@ const socials: Social[] = [
     </div>
 </section>
 
-<style>
-
+<style lang="scss">
     .socials {
-        box-shadow: rgba(99, 99, 99, 0.1) 0px 12px 6px -6px;        ;
+        box-shadow: rgba(99, 99, 99, 0.1) 0px 12px 6px -6px;
         margin-bottom: 1rem;
+        
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            gap: 1.5rem;
+            
+            a {
+                display: flex;
+                align-items: center;
+                padding-block: 0.5rem;
+            }
         }
-    .social-icons {
-        display: flex;
-        justify-content: space-around;
-        gap: 1.5rem;
-    }
-    
-    .social-icons a {
-        display: flex;
-        align-items: center;
-        padding-block: .5rem;
     }
     
     [data-icon] {
         font-size: 2rem;
     }
 
-    @media screen and (width > 800px) {
+    @media screen and (width > 900px) {
         .socials {
             display: none;
         }
+    }
 </style>
