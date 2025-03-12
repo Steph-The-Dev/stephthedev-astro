@@ -31,40 +31,47 @@ const socials: Social[] = [
 
 ---
 
-<section class="socials">
+<section class="socials" aria-label="Social Media Links">
     <div class="social-icons">
         {socials.map((social) => (
-            <a href={social.url} target={social.url}>
-                <Icon name={social.icon} />
+            <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${social.name}`}>
+                <Icon name={social.icon} aria-hidden="true" />
             </a>
         ))}
     </div>
 </section>
 
-<style>
-
+<style lang="scss">
     .socials {
-        box-shadow: rgba(99, 99, 99, 0.1) 0px 12px 6px -6px;        ;
+        box-shadow: rgba(99, 99, 99, 0.1) 0px 12px 6px -6px;
         margin-bottom: 1rem;
+        
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            gap: 1.5rem;
+            
+            a {
+                display: flex;
+                align-items: center;
+                padding-block: 0.5rem;
+                
+                &:focus-visible {
+                    outline: 3px solid var(--clr-accent-400);
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                }
+            }
         }
-    .social-icons {
-        display: flex;
-        justify-content: space-around;
-        gap: 1.5rem;
-    }
-    
-    .social-icons a {
-        display: flex;
-        align-items: center;
-        padding-block: .5rem;
     }
     
     [data-icon] {
         font-size: 2rem;
     }
 
-    @media screen and (width > 800px) {
+    @media screen and (width > 900px) {
         .socials {
             display: none;
         }
+    }
 </style>
