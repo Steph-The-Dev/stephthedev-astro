@@ -73,7 +73,7 @@ const { title, description, pubDate, image } = post.data;
         }
         
         .content {
-            padding: 1.25rem;
+            // padding: 1.25rem;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
@@ -104,8 +104,11 @@ const { title, description, pubDate, image } = post.data;
             font-weight: 500;
             
             &.primary {
-                color: var(--clr-accent-600, #bf5900);
+            
+            &:hover {
+                background-color: var(--clr-text-100);
             }
+        }
             
             .arrow {
                 transition: transform 0.2s ease;

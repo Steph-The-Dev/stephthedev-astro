@@ -12,38 +12,38 @@ const { project } = Astro.props;
 const { title, description, url, githubUrl, image, icons = [] } = project.data;
 ---
 
-<div class="project-card" >
+<div class="project-card" aria-labelledby={`project-title-${project.id}`}>
     <div class="image-container">
         <Image src={image} alt={title} width={800} height={400} format="avif"/>
     </div>
     <div class="content">
-        <h2 class="title">{title}</h2>
+        <h2 class="title" id={`project-title-${project.id}`}>{title}</h2>
         <p class="description">{description}</p>
         
-        <div class="tech-stack">
+        <div class="tech-stack" aria-label="Technologies used">
             {icons && icons.map((icon) => (
-                <Icon name={icon} class="tech-icon" />
+                <Icon name={icon} class="tech-icon" aria-hidden="true" title={icon.split(':')[1] || icon} />
             ))}
         </div>
         
         <div class="actions">
             {url && (
-                <a href={url} target="_blank" aria-label={`Go to ${title} website`} class="action-link primary">
+                <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Go to ${title} website`} class="action-link primary">
                     <span>Go to website</span>
-                    <span class="arrow">&rarr;</span>
+                    <span class="arrow" aria-hidden="true">&rarr;</span>
                 </a>
             )}
             {githubUrl && (
-                <a href={githubUrl} target="_blank" class="action-link secondary" aria-label={`View project ${title} on GitHub`}>
+                <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="action-link secondary" aria-label={`View project ${title} on GitHub`}>
                     <span>View on GitHub</span>
-                    <span class="arrow">&rarr;</span>
+                    <span class="arrow" aria-hidden="true">&rarr;</span>
                 </a>
             )}
         </div>
     </div>
 </div>
 
-<style>
+<style lang="scss">
 .project-card {
     display: grid;
     grid-template-rows: 200px 1fr;
@@ -59,30 +59,30 @@ const { title, description, url, githubUrl, image, icons = [] } = project.data;
         transform 0.3s ease,
         box-shadow 0.3s ease;
     height: 100%;
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 
-        0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 
+            0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            
+        .image-container img {
+            transform: scale(1.05);
+        }
+    }
 }
 
 .image-container {
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
-
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover .image-container img {
-    transform: scale(1.05);
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
 }
 
 .content {
@@ -129,20 +129,83 @@ const { title, description, url, githubUrl, image, icons = [] } = project.data;
     display: flex;
     gap: 0.75rem;
     margin-top: auto;
+    
+    .action-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-weight: 500;
+        
+        &:focus-visible {
+            outline: 3px solid var(--clr-accent-400);
+            outline-offset: 2px;
+        }
+        
+      
+        &.primary, &.secondary {
+            
+            &:hover {
+                background-color: var(--clr-text-100);
+            }
+        }
+        
+        .arrow {
+            transition: transform 0.2s ease;
+        }
+        
+        &:hover .arrow {
+            transform: translateX(4px);
+        }
+    }
 }
 </style>
 
 <script>
     import { getRandomLightColor } from "../../lib/utils";
     
-    
     document.addEventListener("astro:page-load", () => {
         const projectCards = document.querySelectorAll("div.project-card");
-    if (projectCards) {
-        projectCards.forEach((card) => {
-            const bgColor = getRandomLightColor();
-            (card as HTMLElement).style.backgroundColor = bgColor;
-        })
+        if (projectCards) {
+            projectCards.forEach((card) => {
+                // Generate random background color
+                const bgColor = getRandomLightColor();
+                (card as HTMLElement).style.backgroundColor = bgColor;
+                
+                // Get the text elements within the card
+                const textElements = card.querySelectorAll('h2, p.description');
+                
+                // Check if we need to use a darker text color for contrast
+                const isLightColor = isColorLight(bgColor);
+                if (isLightColor) {
+                    textElements.forEach(el => {
+                        (el as HTMLElement).style.color = '#1a1a1a'; // Dark text for light backgrounds
+                    });
+                } else {
+                    textElements.forEach(el => {
+                        (el as HTMLElement).style.color = '#ffffff'; // Light text for dark backgrounds
+                    });
+                }
+            });
+        }
+    });
+    
+    // Helper function to determine if a color is light or dark
+    function isColorLight(color: string): boolean {
+        // Convert hex to RGB
+        const hex = color.replace('#', '');
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        
+        // Calculate perceived brightness using the formula
+        // (0.299*R + 0.587*G + 0.114*B)
+        const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+        
+        // Return true if the color is light (brightness > 150)
+        return brightness > 150;
     }
-})
 </script>
