@@ -31,11 +31,11 @@ const socials: Social[] = [
 
 ---
 
-<section class="socials">
+<section class="socials" aria-label="Social Media Links">
     <div class="social-icons">
         {socials.map((social) => (
-            <a href={social.url} target={social.url}>
-                <Icon name={social.icon} />
+            <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${social.name}`}>
+                <Icon name={social.icon} aria-hidden="true" />
             </a>
         ))}
     </div>
@@ -55,6 +55,12 @@ const socials: Social[] = [
                 display: flex;
                 align-items: center;
                 padding-block: 0.5rem;
+                
+                &:focus-visible {
+                    outline: 3px solid var(--clr-accent-400);
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                }
             }
         }
     }

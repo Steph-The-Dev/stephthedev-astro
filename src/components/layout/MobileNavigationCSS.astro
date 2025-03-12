@@ -13,12 +13,12 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-    <label class="hamburger-menu">
-      <input type="checkbox" />
+    <label class="hamburger-menu" aria-label="Menu toggle">
+      <input type="checkbox" aria-expanded="false" aria-controls="main-menu" />
     </label>
     <aside class="sidebar">
-      <nav>
-        <ul class="menu-items">
+      <nav aria-label="Main navigation">
+        <ul class="menu-items" id="main-menu">
           {items.map((item) => (
             item.isShown && (
               <li>

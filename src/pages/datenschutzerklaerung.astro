@@ -4,7 +4,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Datenschutz" pageTitle="Stephan Pfeiffer | Web Developer" description="Datenschutzerklärung">
-  <BackToHome />
   <div class="wrapper">
     <article class="privacy-policy" aria-labelledby="privacy-policy-title">
       <h1 id="privacy-policy-title" class="title">Datenschutzerkl&auml;rung</h1>
@@ -94,6 +93,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 .wrapper {
   display: grid;
   place-items: center;
+  margin-block: 2rem;
 }
 
 .privacy-policy {

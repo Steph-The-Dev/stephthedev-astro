@@ -2,12 +2,12 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer>
+<footer role="contentinfo">
     <div class="wrapper">
-        <div class="links">
+        <nav class="links" aria-label="Legal information">
             <a href="/impressum">Impressum</a>
             <a href="/datenschutzerklaerung">Datenschutzerkl&auml;rung</a>
-        </div>
+        </nav>
         <p>Stephan Pfeiffer &copy; {currentYear}</p>
     </div>
 </footer>
@@ -17,18 +17,34 @@ const currentYear = new Date().getFullYear();
         background-color: #333;
         color: #fff;
         padding-block: .5rem;
-
     }
+    
     .wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    
     .links {
         width: 100%;
         max-width: var(--max-width);
         display: flex;
         justify-content: space-around;
+        
+        a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+            
+            &:focus-visible {
+                outline: 2px solid white;
+                outline-offset: 4px;
+                border-radius: 2px;
+            }
+        }
     }
-
 </style>

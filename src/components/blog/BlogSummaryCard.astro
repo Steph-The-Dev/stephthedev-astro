@@ -11,7 +11,7 @@ const { post } = Astro.props;
 const { title, description, pubDate, image } = post.data;
 ---
 
-<a href={`/blog/${post.id}/`} class="blog__card">
+<a href={`/blog/${post.id}/`} class="blog__card" aria-labelledby={`post-title-${post.id}`}>
     <div class="image-container">
         <Image src={image} alt={title} width={800} height={400} format="avif"/>
     </div>
@@ -23,25 +23,143 @@ const { title, description, pubDate, image } = post.data;
                 day: 'numeric'
             })}
         </time>
-        <h2>{title}</h2>
+        <h2 id={`post-title-${post.id}`}>{title}</h2>
         <p>{description}</p>
         <p class="action-link primary">
             <span>Read post</span>
-            <span class="arrow">&rarr;</span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
         </p>
     </div>
 </a>
+
+<style lang="scss">
+    .blog__card {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--card-bg-color, #f8f9fa);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        height: 100%;
+        
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        
+        &:focus-visible {
+            outline: 3px solid var(--clr-accent-400);
+            outline-offset: 2px;
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+        }
+        
+        &:hover .image-container img {
+            transform: scale(1.05);
+        }
+        
+        .content {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
+        }
+        
+        h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--clr-text-900, #0f172a);
+        }
+        
+        p {
+            margin: 0;
+            color: var(--clr-text-700, #334155);
+        }
+        
+        .pub-date {
+            font-size: 0.875rem;
+            color: var(--clr-text-500, #64748b);
+        }
+        
+        .action-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+            font-weight: 500;
+            
+            &.primary {
+                color: var(--clr-accent-600, #bf5900);
+            }
+            
+            .arrow {
+                transition: transform 0.2s ease;
+            }
+        }
+        
+        &:hover .action-link .arrow {
+            transform: translateX(4px);
+        }
+    }
+</style>
 
 <script>
     import { getRandomLightColor } from "../../lib/utils";
     
     document.addEventListener("astro:page-load", () => {
         const blogSummaryCards = document.querySelectorAll("a.blog__card");
-    if (blogSummaryCards) {
-        blogSummaryCards.forEach((card) => {
-            const bgColor = getRandomLightColor();
-            (card as HTMLElement).style.backgroundColor = bgColor;
-        })
+        if (blogSummaryCards) {
+            blogSummaryCards.forEach((card) => {
+                // Generate random background color
+                const bgColor = getRandomLightColor();
+                (card as HTMLElement).style.backgroundColor = bgColor;
+                
+                // Get the text elements within the card
+                const textElements = card.querySelectorAll('h2, p:not(.pub-date)');
+                
+                // Check if we need to use a darker text color for contrast
+                const isLightColor = isColorLight(bgColor);
+                if (isLightColor) {
+                    textElements.forEach(el => {
+                        (el as HTMLElement).style.color = '#1a1a1a'; // Dark text for light backgrounds
+                    });
+                } else {
+                    textElements.forEach(el => {
+                        (el as HTMLElement).style.color = '#ffffff'; // Light text for dark backgrounds
+                    });
+                }
+            });
+        }
+    });
+    
+    // Helper function to determine if a color is light or dark
+    function isColorLight(color: string): boolean {
+        // Convert hex to RGB
+        const hex = color.replace('#', '');
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        
+        // Calculate perceived brightness using the formula
+        // (0.299*R + 0.587*G + 0.114*B)
+        const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+        
+        // Return true if the color is light (brightness > 150)
+        return brightness > 150;
     }
-})
 </script>

@@ -21,23 +21,39 @@ const { title, description, pageTitle } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
 	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
 		<div class="head">
 			<BaseHead title={title} pageTitle={pageTitle} description={description} />
 			<BaseNavigation />
 			<MobileSocials/>
 		</div>
-		<main>
+		<main id="main-content">
 			<slot />
 		</main>
 		<Footer />
 	</body>
 </html>
 
-<style>
+<style lang="scss">
 	body {
 		display: grid;
 		grid-template-rows: auto 1fr auto;
 		min-height: 100vh;
 		background-color: rgb(238, 238, 238);
+	}
+	
+	.skip-link {
+		position: absolute;
+		top: -40px;
+		left: 0;
+		background: var(--clr-accent-400);
+		color: white;
+		padding: 8px;
+		z-index: 9999;
+		transition: top 0.2s ease;
+		
+		&:focus {
+			top: 0;
+		}
 	}
 </style>

@@ -5,7 +5,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <!-- BaseLayout component: Provides the main layout structure for the page. -->
 <BaseLayout title="Impressum" pageTitle="Stephan Pfeiffer | Web Developer" description="Impressum">
-  <BackToHome />
   <div class="wrapper">
       <article class="impressum" aria-labelledby="impressum-title">
         <h1 id="impressum-title" class="title">Impressum</h1>
@@ -93,6 +92,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 .wrapper {
   display: grid;
   place-items: center;
+  margin-block: 2rem;
 }
 
 .impressum {
