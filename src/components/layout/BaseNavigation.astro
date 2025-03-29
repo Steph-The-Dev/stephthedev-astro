@@ -33,6 +33,7 @@ const socialIcons = [
 ];
 
 const currentPath = Astro.url.pathname;
+const activeClass = "active";
 ---
 
 <nav class="navbar">
@@ -44,7 +45,9 @@ const currentPath = Astro.url.pathname;
             navigationItems.map((item) => (
               item.isShown && (
                 <li>
-                  <a href={item.url} class={currentPath === item.url ? 'active' : ''}>{item.name}</a>
+                  <a href={item.url} class:list={[
+                    {[activeClass]: item.url === currentPath }
+                  ]}>{item.name}</a>
                 </li>
               )
             ))
