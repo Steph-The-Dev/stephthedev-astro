@@ -32,6 +32,7 @@ const socialIcons = [
   },
 ];
 
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class="navbar">
@@ -43,7 +44,7 @@ const socialIcons = [
             navigationItems.map((item) => (
               item.isShown && (
                 <li>
-                  <a href={item.url}>{item.name}</a>
+                  <a href={item.url} class={currentPath === item.url ? 'active' : ''}>{item.name}</a>
                 </li>
               )
             ))
@@ -106,6 +107,18 @@ const socialIcons = [
         gap: 1.5rem;
         a {
           position: relative;
+          &.active {
+            font-style: italic;
+            &::after {
+              background-color: var(--clr-accent-400);
+              position: absolute;
+              content: "";
+              display: block;
+              bottom: -5px;
+              height: 3px;
+              width: 100%;          }
+          }
+          
           &:hover {
             font-style: italic;
             &::after {
