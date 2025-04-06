@@ -31,16 +31,31 @@ import { ClientRouter } from 'astro:transitions';
     <link rel="manifest" href="/site.webmanifest">
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KYSS0GE29C"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KYSS0GE29C"></script>
 
-  gtag('config', 'G-KYSS0GE29C');
-</script> -->
+    <script>
+          declare global {
+          interface Window {
+            dataLayer: Record<string, any>[];
+            gtag: (...args: any[]) => void;
+          }
+        }
+
+        document.addEventListener('astro:page-load', () => {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function gtag(...args: any[]) {
+            window.dataLayer.push(arguments);
+          };
+          window.gtag('js', new Date());
+          window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+          });
+          window.gtag('config', 'G-KYSS0GE29C');
+        });
+      </script>
 
     <LocalFonts />
 </head>

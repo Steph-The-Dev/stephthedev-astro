@@ -21,7 +21,8 @@
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
     "sass": "^1.86.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

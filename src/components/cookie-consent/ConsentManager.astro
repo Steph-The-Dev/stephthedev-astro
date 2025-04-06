@@ -1,0 +1,255 @@
+---
+// src/components/ConsentManager.astro
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+
+if (!gaMeasurementId) {
+  console.warn("PUBLIC_GA_MEASUREMENT_ID is not set in environment variables. GA4 will not be loaded.");
+}
+---
+
+<script define:vars={{ gaMeasurementId }}>
+  // Make sure this runs only on the client
+  if (typeof window !== 'undefined' && gaMeasurementId) {
+    // Dynamically import the library to ensure it runs client-side
+    import('vanilla-cookieconsent/dist/cookieconsent.esm.js').then(({ CookieConsent }) => {
+      const cc = new CookieConsent({
+        // --- Start Cookie Consent Configuration ---
+        // Find more options at: https://cookieconsent.orestbida.com/reference/configuration-reference.html
+        disablePageInteraction: true,
+
+        guiOptions: {
+          consentModal: {
+            layout: 'box', // box, cloud, bar
+            position: 'bottom right', // bottom, middle, top + left, right, center
+            equalWeightButtons: true,
+            flipButtons: false,
+          },
+          preferencesModal: {
+            layout: 'box', // box, bar
+            position: 'right', // right, left
+            equalWeightButtons: true,
+            flipButtons: false,
+          },
+        },
+
+        categories: {
+          necessary: {
+            readOnly: true, // Necessary cookies cannot be refused
+            enabled: true,
+          },
+          analytics: {
+            // Enabled by default for demonstration, set to false if you want explicit opt-in
+            // enabled: false,
+            autoClear: {
+              cookies: [
+                // Add GA cookie names if needed, though gtag handles this well
+                // { name: /^_ga/ }, // Regex to match GA cookies
+                // { name: '_gid' }, // Specific cookie name
+              ]
+            }
+          },
+          // Add other categories like marketing if needed
+        },
+
+        language: {
+          default: 'en',
+          translations: {
+            en: {
+              consentModal: {
+                title: 'We use cookies!',
+                description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.',
+                acceptAllBtn: 'Accept all',
+                acceptNecessaryBtn: 'Reject all',
+                showPreferencesBtn: 'Manage preferences',
+                // You can optionally link to your privacy policy
+                // footer: `
+                //   <a href="/privacy-policy">Privacy Policy</a>
+                //   <a href="/terms">Terms and Conditions</a>
+                // `
+              },
+              preferencesModal: {
+                title: 'Cookie preferences',
+                acceptAllBtn: 'Accept all',
+                acceptNecessaryBtn: 'Reject all',
+                savePreferencesBtn: 'Save preferences',
+                closeIconLabel: 'Close',
+                sections: [
+                  {
+                    title: 'Cookie usage',
+                    description: 'We use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.'
+                  },
+                  {
+                    title: 'Strictly necessary cookies',
+                    description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly.',
+                    linkedCategory: 'necessary',
+                  },
+                  {
+                    title: 'Performance and Analytics cookies',
+                    description: 'These cookies allow the website to remember the choices you have made in the past',
+                    linkedCategory: 'analytics',
+                    cookieTable: { // Optional: Display cookie details
+                      headers: { name: 'Name', domain: 'Domain', description: 'Description' },
+                      body: [
+                        { name: '_ga', domain: window.location.hostname, description: 'Google Analytics main cookie' },
+                        { name: '_gid', domain: window.location.hostname, description: 'Google Analytics user identification cookie' },
+                        // Add other GA cookies if relevant (_gat, etc.)
+                      ]
+                    }
+                  },
+                  // Add more sections for other categories
+                  {
+                    title: 'More information',
+                    description: 'For any queries in relation to our policy on cookies and your choices, please <a href="/contact">contact us</a>.', // Link to contact or policy
+                  },
+                ],
+              },
+            },
+            // Add other language translations if needed
+          },
+        },
+
+        // --- End Cookie Consent Configuration ---
+
+
+        // --- Callbacks for Consent Logic ---
+
+        /**
+         * Function runs once when the library is initialized.
+         * Checks if consent for analytics was *already given* on a previous visit.
+         */
+        onFirstConsent: ({ cookie }) => {
+          console.log('onFirstConsent triggered', cookie);
+          // Check if analytics category was accepted during the *first* interaction
+          if (cookie && cookie.categories && cookie.categories.includes('analytics')) {
+             loadGoogleAnalytics();
+          }
+        },
+
+        /**
+         * Function runs when the user clicks "Accept" (or Saves Preferences with Analytics enabled).
+         */
+        onConsent: ({ cookie }) => {
+           console.log('onConsent triggered', cookie);
+           // Check if analytics category was accepted *now*
+           if (cookie && cookie.categories && cookie.categories.includes('analytics')) {
+             loadGoogleAnalytics();
+           } else {
+             // Optional: If consent was revoked, you might want to disable GA
+             // disableGoogleAnalytics(); // Implement this if needed
+             console.log("Analytics consent not given or revoked.");
+           }
+        },
+
+        /**
+         * Function runs when the user changes their preferences.
+         * This is often the same logic as onConsent.
+         */
+        onChange: ({ cookie, changedCategories }) => {
+           console.log('onChange triggered', cookie, changedCategories);
+           if (cookie && cookie.categories && cookie.categories.includes('analytics')) {
+             // Check if analytics was among the changed *and now enabled* categories
+             // or if it remained enabled
+              if (changedCategories.includes('analytics') || !isGaLoaded()) {
+                 loadGoogleAnalytics();
+              }
+           } else {
+             // Optional: If consent was revoked via change
+             // disableGoogleAnalytics(); // Implement this if needed
+             console.log("Analytics consent not given or revoked via onChange.");
+           }
+        }
+      }); // End new CookieConsent
+
+      // --- GA4 Loading Logic ---
+
+      // Flag to prevent multiple loads
+      let gaLoaded = false;
+
+      function isGaLoaded() {
+        return gaLoaded || (typeof window.gtag === 'function');
+      }
+
+      function loadGoogleAnalytics() {
+        if (isGaLoaded()) {
+          console.log('GA4 already loaded.');
+          return;
+        }
+
+        console.log('Analytics consent received. Loading GA4...');
+
+        // Create script element for gtag.js
+        const script = document.createElement('script');
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`;
+        script.async = true;
+        script.onload = () => {
+          console.log('gtag.js loaded.');
+          // Initialize dataLayer and gtag function if they don't exist
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag; // Make gtag globally accessible
+
+          // Set default consent state *before* sending config (important for GDPR)
+          // Default to denied unless explicitly granted by cookie consent library
+          gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied' // Default everything to denied
+          });
+
+           // Update consent state based on cookie consent ONLY IF analytics accepted
+           // This tells GA that consent *was* granted for analytics
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+            // Keep others denied unless you have consent for them
+          });
+
+          // Initialize GA4 with the measurement ID
+          gtag('js', new Date());
+          gtag('config', gaMeasurementId, {
+             // Optional: Send initial page view automatically (default behavior)
+             // 'send_page_view': true
+
+             // Optional: Anonymize IP (Recommended for privacy)
+             'anonymize_ip': true
+          });
+
+          gaLoaded = true;
+          console.log('GA4 configured for ID:', gaMeasurementId);
+
+          // You can now track custom events if needed:
+          // gtag('event', 'your_event_name', { 'param': 'value' });
+        };
+        script.onerror = () => {
+           console.error('Failed to load gtag.js');
+        };
+
+        // Append the script to the head
+        document.head.appendChild(script);
+      }
+
+      // --- Initial Check on Page Load ---
+      // Check if valid consent already exists from a previous session
+      // Use cc.validConsent() which checks the cookie on initialization
+      if (cc.validConsent() && cc.acceptedCategory('analytics')) {
+          console.log("Valid consent found on page load for analytics.");
+          loadGoogleAnalytics();
+      } else {
+          console.log("No valid consent found on page load for analytics, waiting for user interaction.");
+      }
+
+    }).catch(err => {
+      console.error("Failed to load vanilla-cookieconsent:", err);
+    });
+  }
+</script>
+
+<!-- This component renders nothing visually, it just runs the script -->
+<!-- You might want to add the CSS for vanilla-cookieconsent -->
+<style is:global>
+  /* Import the default CSS or your custom theme */
+  @import 'vanilla-cookieconsent/dist/cookieconsent.css';
+
+  /* Optional: Customize styles further */
+  /* .cc--main { ... } */
+</style>
