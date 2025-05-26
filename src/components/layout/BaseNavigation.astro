@@ -14,21 +14,25 @@ const socialIcons = [
     name: "Github",
     url: "https://github.com/Steph-The-Dev/",
     icon: "mdi:github",
+    isShown: true
   },
 	{
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/stephanpfeiffer/",
 		icon: "mdi:linkedin",
+    isShown: true
   },
   {
     name: "Bluesky",
     url: "https://stephthedev.bsky.social/",
-	icon: "simple-icons:bluesky",
+	  icon: "simple-icons:bluesky",
+    isShown: false
   },
   {
     name: "RSS Feed",
     url: "https://stephthedev.de/blog.xml",
 	  icon: "mdi:rss-feed",
+    isShown: true
   },
 ];
 
@@ -57,10 +61,12 @@ const activeClass = "active";
     <div class="social-icons">
       {
         socialIcons.map((icon) => (
+          icon.isShown && (
           <a href={icon.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${icon.name}`}>
             <Icon name={icon.icon} aria-hidden="true" />
           </a>
         ))
+        )
       }
     </div>
     <MobileNavigationCSS items={navigationItems} />
