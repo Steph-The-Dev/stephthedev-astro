@@ -52,3 +52,9 @@ export interface SEOMetadata {
     height: number;
   };
 }
+
+declare global {
+  interface Window {
+    _paq?: any[]; // Or a more specific type if you know it
+  }
+}
